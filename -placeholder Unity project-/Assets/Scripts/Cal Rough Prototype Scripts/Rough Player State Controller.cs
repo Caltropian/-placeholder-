@@ -5,7 +5,7 @@ public class RoughPlayerStateController : MonoBehaviour
     Rigidbody2D rb2d;
     RoughWaterMovement water;
     RoughWalkMovement walk;
-    [SerializeField] bool swimming;
+    //[SerializeField] bool swimming;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -25,7 +25,7 @@ public class RoughPlayerStateController : MonoBehaviour
     {
         if (collision.name == "Walk Trigger")
         {
-            swimming = false;
+            //swimming = false;
             walk.enabled = true;
             water.enabled = false;
             //rb2d.gravityScale = 1;
@@ -36,7 +36,7 @@ public class RoughPlayerStateController : MonoBehaviour
     {
         if (collision.tag == "Respawn")
         {
-            swimming = true;
+            //swimming = true;
             walk.enabled = false;
             water.enabled = true;
             //rb2d.gravityScale = 0;
