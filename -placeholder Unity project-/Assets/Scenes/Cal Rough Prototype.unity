@@ -2035,7 +2035,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RoughWaterMovement
   swimAccel: 5
   swimSpeedCap: 8
-  dashSpeed: 3
+  dashSpeed: 150
   dashCooldown: 0
   dashMaxCooldown: 2
 --- !u!212 &1132597665
