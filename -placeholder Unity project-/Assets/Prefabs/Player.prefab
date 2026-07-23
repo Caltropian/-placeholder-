@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6596206048660407095}
   - component: {fileID: 8383278043340244375}
   - component: {fileID: 5355222262597436992}
+  - component: {fileID: -6607255052257625683}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -173,4 +174,23 @@ MonoBehaviour:
   swimSpeed: 2.2
   boostSpeed: 5
   boostSteerMod: 0.4
+  strokeMaxCooldown: 0.6
+  strokeCooldown: 0
+  strokeHoldModifier: 1.1
   rotationSpeed: 1
+--- !u!114 &-6607255052257625683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4144288094768225815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3fdb2c48588cd742b046ac136db20b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerState
+  initialState: 0
+  OnStateChange:
+    m_PersistentCalls:
+      m_Calls: []

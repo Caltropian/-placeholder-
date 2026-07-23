@@ -18,12 +18,16 @@ public class WaterEdgeBehaviour : MonoBehaviour
     [SerializeField]
     private float lowerEdgeForce = 30f;
     Rigidbody2D objRigidbody;
+    PlayerState playerState;
 
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            //Change this so there's a big player script that contains all its pertinent dependencies. 
+            //Calling multiple GetComponents like so can be bad for performance.
             objRigidbody = collision.gameObject.GetComponent<Rigidbody2D>();
+            playerState = collision.gameObject.GetComponent<PlayerState>();
         }
     }
     void OnTriggerExit2D(Collider2D collision)
@@ -33,12 +37,17 @@ public class WaterEdgeBehaviour : MonoBehaviour
             if (objRigidbody.position.y - objectCenter.position.y < 0)
             {
                 objRigidbody.gravityScale = 0;
+                if (playerState.CurrentState != PlayerState.PlayerStates.UNDERWATER)
+                {
+                    playerState.CurrentState = PlayerState.PlayerStates.UNDERWATER;
+                }
             }
             else
             {
                 objRigidbody.gravityScale = upperGravityMax;
             }
             objRigidbody = null;
+            playerState = null;
         }
     }
 
@@ -53,10 +62,19 @@ public class WaterEdgeBehaviour : MonoBehaviour
             if (yDiff <= 0)
             {
                 objRigidbody.gravityScale = Mathf.Lerp(-lowerGravityMax, 0, yDiff);
+                if (playerState.CurrentState != PlayerState.PlayerStates.UNDERWATER)
+                {
+                    playerState.CurrentState = PlayerState.PlayerStates.UNDERWATER;
+                }
             }
             if (yDiff > 0)
             {
                 objRigidbody.gravityScale = Mathf.Lerp(4, upperGravityMax, yDiff);
+                //Ew
+                if (playerState.CurrentState == PlayerState.PlayerStates.UNDERWATER)
+                {
+                    playerState.CurrentState = PlayerState.PlayerStates.ABOVEWATER;
+                }
             }
             if (objRigidbody.position.y >= upperEdge.position.y)
             {
