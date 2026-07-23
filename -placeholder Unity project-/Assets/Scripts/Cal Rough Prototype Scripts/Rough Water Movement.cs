@@ -22,6 +22,7 @@ public class RoughWaterMovement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        //Quick keyboard controls
         var input = Keyboard.current;
         Vector2 dir = new Vector2(0, 0);
         if (input.dKey.isPressed)
@@ -43,6 +44,7 @@ public class RoughWaterMovement : MonoBehaviour
         }
         dashCooldown -= Time.deltaTime;
 
+
         float dash = 0;
         if (input.shiftKey.isPressed && dashCooldown <= 0)
         {
@@ -55,6 +57,7 @@ public class RoughWaterMovement : MonoBehaviour
         rb2d.AddForce(dir * (swimAccel + dash));
 
         //Caps the swim speed
+        //At least, it did. To implement the dash easily, I switched this responsibility to the linear dampening in the rigidbody
         /*if (Mathf.Abs(rb2d.linearVelocityX) > swimSpeedCap)
         {
             rb2d.linearVelocityX = swimSpeedCap * Mathf.Sign(rb2d.linearVelocityX);
@@ -69,6 +72,7 @@ public class RoughWaterMovement : MonoBehaviour
     }
 
     //function scraped and modified from stackOverflow
+    //Takes a vector2 and returns the euler angle
     float euler_angle(Vector2 vector)
     {
         var rad = Mathf.Atan(vector.y / vector.x);   // arcus tangent in radians

@@ -17,6 +17,7 @@ public class RoughBreathScript : MonoBehaviour
         currentBreath -= Time.deltaTime;
     }
 
+    //These trigger events keep the player from swimming through the air by applying gravity when in air pockets.
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.tag == "Respawn")

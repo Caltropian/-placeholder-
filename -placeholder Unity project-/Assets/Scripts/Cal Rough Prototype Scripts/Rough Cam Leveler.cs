@@ -12,6 +12,7 @@ public class RoughCamLeveler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Keeps the camera level on the rotating player. Slight errors make little ripple effects.
         transform.rotation = Quaternion.Euler(0, 0, -parent.rotation.z);
     }
 }

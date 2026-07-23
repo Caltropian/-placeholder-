@@ -18,6 +18,7 @@ public class RoughWalkMovement : MonoBehaviour
         //forces character to stand
         rb2d.MoveRotation(0);
         
+        //The most basic walking ever devised
         var input = Keyboard.current;
         Vector2 dir = new Vector2(0, 0);
         if (input.dKey.isPressed)

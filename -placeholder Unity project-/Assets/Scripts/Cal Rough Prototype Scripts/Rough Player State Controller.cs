@@ -20,6 +20,7 @@ public class RoughPlayerStateController : MonoBehaviour
         
     }
 
+    //Keeps track of whether the player should be walking or swimming using dedicated trigger zones.
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.name == "Walk Trigger")
