@@ -17,7 +17,7 @@ public class RoughPlayerStateController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     //Keeps track of whether the player should be walking or swimming using dedicated trigger zones.
