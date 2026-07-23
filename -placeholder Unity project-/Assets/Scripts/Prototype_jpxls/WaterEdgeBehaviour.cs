@@ -56,7 +56,7 @@ public class WaterEdgeBehaviour : MonoBehaviour
             }
             if (yDiff > 0)
             {
-                objRigidbody.gravityScale = Mathf.Lerp(0, upperGravityMax, yDiff);
+                objRigidbody.gravityScale = Mathf.Lerp(4, upperGravityMax, yDiff);
             }
             if (objRigidbody.position.y >= upperEdge.position.y)
             {
