@@ -2424,7 +2424,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2030979113}
   m_CullTransparentMesh: 1
---- !u!1001 &1266232998330426336
+--- !u!4 &2042905833621055716 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3866518651366380310, guid: 2895cfc708f64b24684ddd485232996e, type: 3}
+  m_PrefabInstance: {fileID: 2886971010839292217}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2886971010839292217
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -2481,22 +2486,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2895cfc708f64b24684ddd485232996e, type: 3}
---- !u!4 &2042905833621055716 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3866518651366380310, guid: 2895cfc708f64b24684ddd485232996e, type: 3}
-  m_PrefabInstance: {fileID: 1266232998330426336}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &6981985744639235566 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7325180037120190615, guid: 2895cfc708f64b24684ddd485232996e, type: 3}
-  m_PrefabInstance: {fileID: 1266232998330426336}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1584810243}
-  - {fileID: 1266232998330426336}
+  - {fileID: 2886971010839292217}
   - {fileID: 1547086105}
   - {fileID: 417186601}
   - {fileID: 1168305605}
