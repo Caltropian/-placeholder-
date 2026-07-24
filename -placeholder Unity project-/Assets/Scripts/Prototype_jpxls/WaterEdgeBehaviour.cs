@@ -11,8 +11,14 @@ public class WaterEdgeBehaviour : MonoBehaviour
     private float upperGravityMax = 9.8f;
     [SerializeField]
     private float lowerGravityMax = 2.0f;
+    [SerializeField]
+    private float nonPlungableGravity = 0.1f;
+    [SerializeField]
+    private bool IsPlungable = true;
     Rigidbody2D objRigidbody;
     PlayerState playerState;
+    PlayerInputs playerInputs;
+
 
     void OnTriggerEnter2D(Collider2D collision)
     {
@@ -22,6 +28,12 @@ public class WaterEdgeBehaviour : MonoBehaviour
             //Calling multiple GetComponents like so can be bad for performance.
             objRigidbody = collision.gameObject.GetComponent<Rigidbody2D>();
             playerState = collision.gameObject.GetComponent<PlayerState>();
+            playerInputs = collision.gameObject.GetComponent<PlayerInputs>();
+            if (!IsPlungable)
+            {
+                upperGravityMax = nonPlungableGravity;
+                lowerGravityMax = nonPlungableGravity;
+            }
         }
     }
     void OnTriggerExit2D(Collider2D collision)
@@ -40,6 +52,7 @@ public class WaterEdgeBehaviour : MonoBehaviour
             {
                 objRigidbody.gravityScale = upperGravityMax;
             }
+            playerInputs.CanPlunge = false;
             objRigidbody = null;
             playerState = null;
         }
@@ -68,14 +81,15 @@ public class WaterEdgeBehaviour : MonoBehaviour
                 {
                     playerState.CurrentState = PlayerState.PlayerStates.UNDERWATER;
                 }
+                playerInputs.CanPlunge = false;
             }
             else
             {
                 if (playerState.CurrentState == PlayerState.PlayerStates.UNDERWATER)
                 {
                     playerState.CurrentState = PlayerState.PlayerStates.ABOVEWATER;
-                    Debug.Log("Switching to above water");
                 }
+                if (IsPlungable) playerInputs.CanPlunge = true;
             }
             /*if (objRigidbody.position.y >= upperEdge.position.y)
             {

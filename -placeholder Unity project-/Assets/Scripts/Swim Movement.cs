@@ -9,8 +9,10 @@ public class SwimMovement : MonoBehaviour
     private float swimSpeed = 4f;
     [SerializeField]
     private float boostSpeed = 10f,
+
         boostSteerMod = 0.2f;
     [SerializeField]
+
     private float strokeMaxCooldown = 0.6f,
         strokeCooldown = 0f,
         strokeHoldModifier = 1.1f;
@@ -74,7 +76,6 @@ public class SwimMovement : MonoBehaviour
             rb2d.MoveRotation(Mathf.MoveTowardsAngle(currentRotation, desiredRotation, rotationSpeed));
         }
     }
-
     /// <summary>
     /// Takes a directional vector and returns the corresponding angle. 
     /// </summary>
