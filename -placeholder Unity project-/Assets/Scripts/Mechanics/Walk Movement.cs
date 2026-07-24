@@ -4,15 +4,34 @@ public class WalkMovement : MonoBehaviour
 {
     [Header("Movement Parameters")]
     [SerializeField]
-    private float walkSpeed;
+    private float walkSpeed = 1f;
+
+    private Rigidbody2D rb2d;
+
+    public bool IsMoving = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        rb2d = GetComponent<Rigidbody2D>();
     }
 
+    private Vector2 moveValue = new(0, 0);
+    public void Move(bool isMoving, Vector2 normalizedAxis)
+    {
+        moveValue = normalizedAxis;
+        IsMoving = isMoving;
+    }
+
+    
     void FixedUpdate()
     {
-        
+        if (moveValue.y > 0)
+        {
+            moveValue.y = 0f;
+        }
+        rb2d.AddForce(moveValue * walkSpeed);
+        float currentRotation = transform.rotation.eulerAngles.z;
+
+        rb2d.MoveRotation(Mathf.MoveTowardsAngle(currentRotation, 0, 1));
     }
 }
