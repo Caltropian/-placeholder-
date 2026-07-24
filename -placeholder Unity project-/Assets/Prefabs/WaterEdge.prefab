@@ -248,9 +248,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WaterEdgeBehaviour
   objectCenter: {fileID: 8128189897394335284}
-  upperEdge: {fileID: 5692239180038703237}
   lowerEdge: {fileID: 281462603872326886}
-  upperGravityMax: 1
-  lowerGravityMax: 0.1
-  upperEdgeForce: 1
-  lowerEdgeForce: 1
+  upperGravityMax: 6
+  lowerGravityMax: 1
+  nonPlungableGravity: 0.1
+  IsPlungable: 1

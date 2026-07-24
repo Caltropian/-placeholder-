@@ -55,6 +55,7 @@ public class PlayerState : MonoBehaviour
         this.rb2d.rotation = 0;
         this.rb2d.totalTorque = 0;
         CurrentState = PlayerStates.ABOVEWATER;
+        playerInputs.CanPlunge = false;
         this.transform.position = new(CurrentCheckpoint.position.x, CurrentCheckpoint.position.y, 0);
         playerInputs.enabled = false;
     }

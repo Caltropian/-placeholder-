@@ -20,6 +20,8 @@ namespace Prototype_jpxls
         private Vector2 movementAxis;
         private float currSwimInputCD = 0.0f;
 
+
+
         void Awake()
         {
             inputActions ??= new PlayerInputActions();
@@ -31,6 +33,7 @@ namespace Prototype_jpxls
         void OnEnable()
         {
             playerActions.Enable();
+
             swimInput.started += ExecuteSwimAction;
         }
 
@@ -49,7 +52,11 @@ namespace Prototype_jpxls
         }
         void FixedUpdate()
         {
+
+
+
             playerMovement.PerformStrafe(movementAxis);
+
         }
 
         private void ExecuteSwimAction(InputAction.CallbackContext context)

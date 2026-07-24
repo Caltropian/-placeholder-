@@ -17,6 +17,7 @@ public class DeathScreenVisuals : IPausable
     private Image blackScreenImage;
 
     public static event Action OnScreenClear;
+    public static event Action OnScreenBlack;
     private float maxTimer = 0f;
     private float currAlpha = 0f;
     private bool isFirstTimeInGrace = true;
@@ -36,7 +37,7 @@ public class DeathScreenVisuals : IPausable
         OxygenTracker.OnDrown -= DeathRespawnCooldown;
 
     }
-    private void GraceCountdown(bool isGracing, float timeUntilDeath)
+    public void GraceCountdown(bool isGracing, float timeUntilDeath)
     {
         if (isGamePaused) return;
         if (isGracing)
@@ -49,6 +50,10 @@ public class DeathScreenVisuals : IPausable
             Color newScreenColor = blackScreenImage.color;
             newScreenColor.a = Mathf.Lerp(1, 0, timeUntilDeath / maxTimer);
             blackScreenImage.color = newScreenColor;
+            if (blackScreenImage.color.a == 1)
+            {
+                OnScreenBlack?.Invoke();
+            }
         }
         else
         {
