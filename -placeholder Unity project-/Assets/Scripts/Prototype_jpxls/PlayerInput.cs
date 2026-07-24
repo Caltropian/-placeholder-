@@ -55,7 +55,6 @@ namespace Prototype_jpxls
         private void ExecuteSwimAction(InputAction.CallbackContext context)
         {
             if (movementAxis.magnitude == 0 || currSwimInputCD >= 0) return;
-            Debug.Log("Swim!");
             currSwimInputCD = swimInputCooldown;
             playerMovement.PerformSwim(movementAxis);
         }

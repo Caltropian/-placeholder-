@@ -14,9 +14,6 @@ public class InitialSetup : MonoBehaviour
     private PlayableDirector initialDirector, startGameDirector;
     [SerializeField]
     private GameObject spotlightMask;
-    [Header("Settings")]
-    [SerializeField]
-    private PlayerState.PlayerStates initialState;
 
     [Header("Debug")]
     [SerializeField]
@@ -62,7 +59,6 @@ public class InitialSetup : MonoBehaviour
     }
     public void StartGame()
     {
-        playerState.CurrentState = initialState;
         foreach (IInputReciever inputReciever in inputRecievers)
         {
             inputReciever.enabled = true;
