@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 5355222262597436992}
   - component: {fileID: -6607255052257625683}
   - component: {fileID: 1115967381933341646}
+  - component: {fileID: 7214699053625765853}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -211,6 +212,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1115967381933341646}
+        m_TargetAssemblyTypeName: PlayerInputs, Assembly-CSharp
+        m_MethodName: OnChangedPlayerState
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1115967381933341646
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -224,6 +237,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerInputs
   swimMovement: {fileID: 5355222262597436992}
+  walkMovement: {fileID: 7214699053625765853}
+--- !u!114 &7214699053625765853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4144288094768225815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb3ddc0d83dd87d4386f1f8a120a9770, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WalkMovement
+  walkSpeed: 6
+  IsMoving: 0
 --- !u!1001 &1322029826017369228
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -313,6 +341,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3866518651366380310}
     m_Modifications:
+    - target: {fileID: 6397765530265840474, guid: 6b08c7ff1c7c719428ccae16cf1350d6, type: 3}
+      propertyPath: m_TagString
+      value: Mask
+      objectReference: {fileID: 0}
     - target: {fileID: 6409209584935807102, guid: 6b08c7ff1c7c719428ccae16cf1350d6, type: 3}
       propertyPath: m_Name
       value: PlayerCanvas
@@ -395,6 +427,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6731870651895784315, guid: 6b08c7ff1c7c719428ccae16cf1350d6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8047246306499423791, guid: 6b08c7ff1c7c719428ccae16cf1350d6, type: 3}
+      propertyPath: m_Color.a
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

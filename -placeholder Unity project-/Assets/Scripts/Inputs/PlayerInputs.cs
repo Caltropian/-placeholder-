@@ -34,11 +34,16 @@ public class PlayerInputs : IInputReciever
     }
     private void BoostInput(InputAction.CallbackContext context)
     {
-        swimMovement.Boost(true);
+        if (_isUnderwater)
+        {
+            swimMovement.Boost(true);
+        }
     }
     private void CancelledBoostInput(InputAction.CallbackContext context)
     {
+
         swimMovement.Boost(false);
+
     }
 
     protected override void OnDisable()
@@ -71,7 +76,6 @@ public class PlayerInputs : IInputReciever
         Vector2 movementAxis = playerMovement.ReadValue<Vector2>();
         if (_isUnderwater)
         {
-
             swimMovement.Move(playerMovement.IsPressed(), movementAxis);
         }
         else
@@ -82,20 +86,14 @@ public class PlayerInputs : IInputReciever
 
     public void OnChangedPlayerState(PlayerState.PlayerStates state)
     {
-        _isUnderwater = state switch
+        if (state == PlayerState.PlayerStates.UNDERWATER)
         {
-            PlayerState.PlayerStates.UNDERWATER => true,
-            _ => false,
-        };
-        if (_isUnderwater)
-        {
-            swimMovement.enabled = true;
-            walkMovement.enabled = false;
+            _isUnderwater = true;
+
         }
         else
         {
-            swimMovement.enabled = false;
-            walkMovement.enabled = true;
+            _isUnderwater = false;
         }
     }
 }

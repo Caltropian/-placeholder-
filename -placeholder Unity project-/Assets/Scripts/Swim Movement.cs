@@ -30,7 +30,6 @@ public class SwimMovement : MonoBehaviour
     }
 
     private Vector2 moveValue = new(0, 0);
-    private Vector2 boostForce = new(0, 0);
     public bool IsBoosting = false;
     public bool IsMoving = false;
     public void Move(bool isMoving, Vector2 normalizedAxis)
