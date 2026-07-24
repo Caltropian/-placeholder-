@@ -80,19 +80,19 @@ public class WaterEdgeBehaviour : MonoBehaviour
                 if (playerState.CurrentState == PlayerState.PlayerStates.UNDERWATER)
                 {
                     playerState.CurrentState = PlayerState.PlayerStates.ABOVEWATER;
-                    Debug.Log("Switching to above water");
                 }
             }
-            /*if (objRigidbody.position.y >= upperEdge.position.y)
-            {
-                Debug.Log("Adding force");
-                objRigidbody.AddForceY(-upperEdgeForce, ForceMode2D.Force);
-            }
-            if (objRigidbody.position.y <= lowerEdge.position.y)
-            {
-                Debug.Log("Adding force");
-                objRigidbody.AddForceY(lowerEdgeForce, ForceMode2D.Force);
-            }*/
+            /*             if (objRigidbody.position.y >= upperEdge.position.y)
+                        {
+                            Debug.Log("Adding force");
+                            objRigidbody.AddForceY(-upperEdgeForce, ForceMode2D.Force);
+                        }
+                        if (objRigidbody.position.y <= lowerEdge.position.y)
+                        {
+                            Debug.Log("Adding force");
+                            objRigidbody.AddForceY(lowerEdgeForce, ForceMode2D.Force);
+                        } 
+            */
         }
     }
 }
