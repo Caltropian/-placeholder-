@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class OxygenTracker : MonoBehaviour
+public class OxygenTracker : IPausable
 {
     [Serializable]
     internal class Range2
@@ -70,6 +70,7 @@ public class OxygenTracker : MonoBehaviour
     }
     void Update()
     {
+        if (isGamePaused) return;
         if (_ranOutOfOxygen) return;
         if (!_isUnderwater && (_currentOxygen == _maxOxygen)) return;
         if (_isUnderwater)
