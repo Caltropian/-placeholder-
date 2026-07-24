@@ -34,8 +34,8 @@ public class OxygenTracker : IPausable
     #endregion
 
     #region Local Parameters
-    private float _maxOxygen = 1;
-    private bool _isUnderwater = true;
+    private readonly float _maxOxygen = 1;
+    private bool _isUnderwater = false;
     private bool _isOnGracePeriod = false;
     private bool _ranOutOfOxygen = false;
     private float _currentOxygen;
