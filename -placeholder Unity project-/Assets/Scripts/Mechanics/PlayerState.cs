@@ -9,8 +9,6 @@ public class PlayerState : MonoBehaviour
         UNDERWATER,
         ABOVEWATER
     }
-    [SerializeField]
-    private PlayerStates initialState;
     private PlayerStates _currState;
     public UnityEvent<PlayerStates> OnStateChange;
 
@@ -25,9 +23,5 @@ public class PlayerState : MonoBehaviour
         {
             return _currState;
         }
-    }
-    void Start()
-    {
-        CurrentState = initialState;
     }
 }

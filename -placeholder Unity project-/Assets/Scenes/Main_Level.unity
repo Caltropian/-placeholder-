@@ -832,6 +832,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 768033093}
     - target: {fileID: 8293418615002791496, guid: a497b168cb3b85647b7e2b2d68940a04, type: 3}
+      propertyPath: playerState
+      value: 
+      objectReference: {fileID: 1919494971}
+    - target: {fileID: 8293418615002791496, guid: a497b168cb3b85647b7e2b2d68940a04, type: 3}
       propertyPath: spotlightMask
       value: 
       objectReference: {fileID: 1425358368}
@@ -63405,7 +63409,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5355222262597436992, guid: 2895cfc708f64b24684ddd485232996e, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6550755558218920920, guid: 2895cfc708f64b24684ddd485232996e, type: 3}
+      propertyPath: timeToDepleteOxygen
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 6596206048660407095, guid: 2895cfc708f64b24684ddd485232996e, type: 3}
       propertyPath: m_GravityScale
@@ -66714,6 +66722,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1919494971 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: -6607255052257625683, guid: 2895cfc708f64b24684ddd485232996e, type: 3}
+  m_PrefabInstance: {fileID: 1271053584}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3fdb2c48588cd742b046ac136db20b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerState
 --- !u!1 &2049400284
 GameObject:
   m_ObjectHideFlags: 0

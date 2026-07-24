@@ -89,11 +89,14 @@ public class PlayerInputs : IInputReciever
         if (state == PlayerState.PlayerStates.UNDERWATER)
         {
             _isUnderwater = true;
-
+            walkMovement.enabled = false;
+            swimMovement.enabled = true;
         }
         else
         {
             _isUnderwater = false;
+            walkMovement.enabled = true;
+            swimMovement.enabled = false;
         }
     }
 }

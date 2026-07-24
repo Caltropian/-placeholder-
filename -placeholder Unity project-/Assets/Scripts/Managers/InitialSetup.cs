@@ -15,6 +15,10 @@ public class InitialSetup : MonoBehaviour
     [SerializeField]
     private GameObject spotlightMask;
 
+    [Header("Settings")]
+    [SerializeField]
+    private PlayerState.PlayerStates initialState;
+
     [Header("Debug")]
     [SerializeField]
     private bool skipStartScreen = false;
@@ -71,5 +75,6 @@ public class InitialSetup : MonoBehaviour
             }
             go.SetActive(false);
         }
+        playerState.CurrentState = initialState;
     }
 }
