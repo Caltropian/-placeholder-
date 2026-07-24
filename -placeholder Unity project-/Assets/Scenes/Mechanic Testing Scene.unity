@@ -438,11 +438,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 119878626}
   m_CullTransparentMesh: 1
---- !u!1 &241085292 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1900875271588297872, guid: 2895cfc708f64b24684ddd485232996e, type: 3}
-  m_PrefabInstance: {fileID: 2886971010839292217}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &245391770
 GameObject:
   m_ObjectHideFlags: 0
@@ -738,7 +733,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PauseManager
   pauseVisuals:
-  - {fileID: 241085292}
+  - {fileID: 6981985744639235566}
   - {fileID: 1560938737}
 --- !u!4 &417186601
 Transform:
