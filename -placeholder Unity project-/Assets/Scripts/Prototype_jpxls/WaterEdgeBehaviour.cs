@@ -58,34 +58,41 @@ public class WaterEdgeBehaviour : MonoBehaviour
             //Adjust gravity based on distance to center.
             //Get Difference in Y
             float yDiff = objRigidbody.position.y - objectCenter.position.y;
+            float lowerYDiff = objRigidbody.position.y - lowerEdge.position.y;
             //If the player is below the center point.
             if (yDiff <= 0)
             {
                 objRigidbody.gravityScale = Mathf.Lerp(-lowerGravityMax, 0, yDiff);
+            }
+            if (yDiff > 0)
+            {
+                objRigidbody.gravityScale = Mathf.Lerp(4, upperGravityMax, yDiff);
+            }
+            if (lowerYDiff <= 0)
+            {
                 if (playerState.CurrentState != PlayerState.PlayerStates.UNDERWATER)
                 {
                     playerState.CurrentState = PlayerState.PlayerStates.UNDERWATER;
                 }
             }
-            if (yDiff > 0)
+            else
             {
-                objRigidbody.gravityScale = Mathf.Lerp(4, upperGravityMax, yDiff);
-                //Ew
                 if (playerState.CurrentState == PlayerState.PlayerStates.UNDERWATER)
                 {
                     playerState.CurrentState = PlayerState.PlayerStates.ABOVEWATER;
                 }
             }
-            if (objRigidbody.position.y >= upperEdge.position.y)
-            {
-                Debug.Log("Adding force");
-                objRigidbody.AddForceY(-upperEdgeForce, ForceMode2D.Force);
-            }
-            if (objRigidbody.position.y <= lowerEdge.position.y)
-            {
-                Debug.Log("Adding force");
-                objRigidbody.AddForceY(lowerEdgeForce, ForceMode2D.Force);
-            }
+            /*             if (objRigidbody.position.y >= upperEdge.position.y)
+                        {
+                            Debug.Log("Adding force");
+                            objRigidbody.AddForceY(-upperEdgeForce, ForceMode2D.Force);
+                        }
+                        if (objRigidbody.position.y <= lowerEdge.position.y)
+                        {
+                            Debug.Log("Adding force");
+                            objRigidbody.AddForceY(lowerEdgeForce, ForceMode2D.Force);
+                        } 
+            */
         }
     }
 }

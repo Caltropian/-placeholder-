@@ -4,9 +4,6 @@ using UnityEngine.InputSystem;
 
 public class SwimMovement : MonoBehaviour
 {
-    private InputAction moveAction,
-        boostAction;
-
     [Header("Movement Parameters")]
     [SerializeField]
     private float swimSpeed = 4f;
@@ -24,29 +21,34 @@ public class SwimMovement : MonoBehaviour
     [Header("Dependencies")]
 
     private Rigidbody2D rb2d;
-    private void OnEnable()
-    {
-        //moveAction is a vector2, boostAction is a button press
-        moveAction = InputSystem.actions.FindAction("Move");
-        boostAction = InputSystem.actions.FindAction("Sprint");
-    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
-        
+
     }
 
-    // FixedUpdate is called once every physics tick
+    private Vector2 moveValue = new(0, 0);
+    private Vector2 boostForce = new(0, 0);
+    public bool IsBoosting = false;
+    public bool IsMoving = false;
+    public void Move(bool isMoving, Vector2 normalizedAxis)
+    {
+        moveValue = normalizedAxis;
+        IsMoving = isMoving;
+    }
+    public void Boost(bool isBoosting)
+    {
+        IsBoosting = isBoosting;
+    }
     void FixedUpdate()
     {
-        Vector2 moveValue = moveAction.ReadValue<Vector2>();
         Vector2 currentVelocity = rb2d.linearVelocity;
         Vector2 moveForce = moveValue * swimSpeed;
         Vector2 boostForce = Vector2.zero;
 
-        if (boostAction.IsPressed())
+        if (IsBoosting)
         {
             strokeCooldown -= Time.deltaTime * strokeHoldModifier;
             moveForce *= boostSteerMod;
@@ -64,7 +66,7 @@ public class SwimMovement : MonoBehaviour
         rb2d.AddForce(moveForce);
         rb2d.AddForce(boostForce, ForceMode2D.Impulse);
 
-        if (moveAction.IsPressed())
+        if (IsMoving)
         {
             //Slowly turns towards direction of movement
             float desiredRotation = vector_to_angle(rb2d.linearVelocity);
