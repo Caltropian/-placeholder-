@@ -18,6 +18,8 @@ public class InitialSetup : MonoBehaviour
     [Header("Settings")]
     [SerializeField]
     private PlayerState.PlayerStates initialState;
+    [SerializeField]
+    private Transform initialCheckpoint;
 
     [Header("Debug")]
     [SerializeField]
@@ -54,6 +56,7 @@ public class InitialSetup : MonoBehaviour
         {
             go.SetActive(true);
         }
+        playerState.CurrentCheckpoint = initialCheckpoint;
         initialDirector.Play();
     }
     public void StartGameCutscene()

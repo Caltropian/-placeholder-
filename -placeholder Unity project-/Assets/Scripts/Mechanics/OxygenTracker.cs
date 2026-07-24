@@ -1,4 +1,5 @@
 using System;
+using System.Transactions;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -27,7 +28,10 @@ public class OxygenTracker : IPausable
     private Range2 gracePeriodBeforeDeath = new(1f, 2f);
 
     [Header("Adjustable Settings")]
+    [SerializeField]
     private bool visualizeGracePeriod = true;
+    [SerializeField]
+    private bool canDie = true;
 
     [Header("Events")]
     public UnityEvent<float> OnValueChanged;
@@ -79,7 +83,7 @@ public class OxygenTracker : IPausable
             //Only Invoke when tracking a grace period.
             if (_isOnGracePeriod)
             {
-                GracePeriodValueChange?.Invoke(_isOnGracePeriod, CurrentOxygen);
+                if (canDie) GracePeriodValueChange?.Invoke(_isOnGracePeriod, CurrentOxygen);
             }
             if (_currentOxygen <= 0)
             {
@@ -91,8 +95,15 @@ public class OxygenTracker : IPausable
                 }
                 else
                 {
-                    _ranOutOfOxygen = true;
-                    OnDrown?.Invoke();
+                    if (canDie)
+                    {
+                        _ranOutOfOxygen = true;
+                        OnDrown?.Invoke();
+                    }
+                    else
+                    {
+                        _isOnGracePeriod = false;
+                    }
                 }
             }
         }
@@ -119,6 +130,12 @@ public class OxygenTracker : IPausable
             PlayerState.PlayerStates.UNDERWATER => true,
             _ => false,
         };
+    }
+    public void ResetState()
+    {
+        _currentOxygen = _maxOxygen;
+        _isOnGracePeriod = false;
+        _ranOutOfOxygen = false;
     }
 
 }

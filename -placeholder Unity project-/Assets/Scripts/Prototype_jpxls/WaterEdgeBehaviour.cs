@@ -5,18 +5,12 @@ public class WaterEdgeBehaviour : MonoBehaviour
     [SerializeField]
     private Transform objectCenter;
     [SerializeField]
-    private Transform upperEdge;
-    [SerializeField]
     private Transform lowerEdge;
     [Header("Water Edge Settings")]
     [SerializeField]
     private float upperGravityMax = 9.8f;
     [SerializeField]
     private float lowerGravityMax = 2.0f;
-    [SerializeField]
-    private float upperEdgeForce = 30f;
-    [SerializeField]
-    private float lowerEdgeForce = 30f;
     Rigidbody2D objRigidbody;
     PlayerState playerState;
 
