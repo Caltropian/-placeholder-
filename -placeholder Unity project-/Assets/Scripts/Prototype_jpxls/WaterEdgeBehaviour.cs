@@ -66,7 +66,7 @@ public class WaterEdgeBehaviour : MonoBehaviour
             }
             if (yDiff > 0)
             {
-                objRigidbody.gravityScale = Mathf.Lerp(4, upperGravityMax, yDiff);
+                objRigidbody.gravityScale = Mathf.Lerp(0, upperGravityMax, yDiff);
             }
             if (lowerYDiff <= 0)
             {
@@ -80,19 +80,19 @@ public class WaterEdgeBehaviour : MonoBehaviour
                 if (playerState.CurrentState == PlayerState.PlayerStates.UNDERWATER)
                 {
                     playerState.CurrentState = PlayerState.PlayerStates.ABOVEWATER;
+                    Debug.Log("Switching to above water");
                 }
             }
-            /*             if (objRigidbody.position.y >= upperEdge.position.y)
-                        {
-                            Debug.Log("Adding force");
-                            objRigidbody.AddForceY(-upperEdgeForce, ForceMode2D.Force);
-                        }
-                        if (objRigidbody.position.y <= lowerEdge.position.y)
-                        {
-                            Debug.Log("Adding force");
-                            objRigidbody.AddForceY(lowerEdgeForce, ForceMode2D.Force);
-                        } 
-            */
+            /*if (objRigidbody.position.y >= upperEdge.position.y)
+            {
+                Debug.Log("Adding force");
+                objRigidbody.AddForceY(-upperEdgeForce, ForceMode2D.Force);
+            }
+            if (objRigidbody.position.y <= lowerEdge.position.y)
+            {
+                Debug.Log("Adding force");
+                objRigidbody.AddForceY(lowerEdgeForce, ForceMode2D.Force);
+            }*/
         }
     }
 }

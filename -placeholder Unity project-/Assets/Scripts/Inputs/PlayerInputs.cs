@@ -10,7 +10,11 @@ public class PlayerInputs : IInputReciever
     private InputAction sprint;
     [SerializeField]
     private SwimMovement swimMovement;
+    [SerializeField]
+    private WalkMovement walkMovement;
     #endregion
+
+    private bool _isUnderwater = false;
     protected override void Awake()
     {
         base.Awake();
@@ -65,7 +69,33 @@ public class PlayerInputs : IInputReciever
     void Update()
     {
         Vector2 movementAxis = playerMovement.ReadValue<Vector2>();
-        swimMovement.Move(playerMovement.IsPressed(), movementAxis);
+        if (_isUnderwater)
+        {
+
+            swimMovement.Move(playerMovement.IsPressed(), movementAxis);
+        }
+        else
+        {
+            walkMovement.Move(playerMovement.IsPressed(), movementAxis);
+        }
     }
 
+    public void OnChangedPlayerState(PlayerState.PlayerStates state)
+    {
+        _isUnderwater = state switch
+        {
+            PlayerState.PlayerStates.UNDERWATER => true,
+            _ => false,
+        };
+        if (_isUnderwater)
+        {
+            swimMovement.enabled = true;
+            walkMovement.enabled = false;
+        }
+        else
+        {
+            swimMovement.enabled = false;
+            walkMovement.enabled = true;
+        }
+    }
 }
