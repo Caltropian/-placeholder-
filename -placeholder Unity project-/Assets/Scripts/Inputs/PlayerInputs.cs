@@ -32,6 +32,7 @@ public class PlayerInputs : IInputReciever
             sprint.canceled += CancelledBoostInput;
         }
     }
+
     private void BoostInput(InputAction.CallbackContext context)
     {
         if (_isUnderwater)
@@ -54,6 +55,9 @@ public class PlayerInputs : IInputReciever
             sprint.performed -= BoostInput;
             sprint.canceled -= CancelledBoostInput;
             playerActions.Disable();
+            swimMovement.IsBoosting = false;
+            swimMovement.IsMoving = false;
+            walkMovement.IsMoving = false;
         }
     }
     public override void Pause(bool isPaused)
