@@ -63403,15 +63403,15 @@ PrefabInstance:
       objectReference: {fileID: 1271053592}
     - target: {fileID: 2586920605534662197, guid: 2895cfc708f64b24684ddd485232996e, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2586920605534662197, guid: 2895cfc708f64b24684ddd485232996e, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2586920605534662197, guid: 2895cfc708f64b24684ddd485232996e, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3391220810441651907, guid: 2895cfc708f64b24684ddd485232996e, type: 3}
       propertyPath: timeToDepleteOxygen
