@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8383278043340244375}
   - component: {fileID: 5355222262597436992}
   - component: {fileID: -6607255052257625683}
+  - component: {fileID: 4915959739770167793}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -177,7 +178,7 @@ MonoBehaviour:
   strokeMaxCooldown: 0.6
   strokeCooldown: 0
   strokeHoldModifier: 1.1
-  rotationSpeed: 1
+  rotationSpeed: 3
 --- !u!114 &-6607255052257625683
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -192,5 +193,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerState
   initialState: 0
   OnStateChange:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &4915959739770167793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4144288094768225815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 051ec8d865ad619439cc99fa6606519e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OxygenTracker
+  timeToDepleteOxygen: 30
+  gracePeriodBeforeDeath:
+    minValue: 1
+    maxValue: 2
+    graceExists: 1
+  OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
