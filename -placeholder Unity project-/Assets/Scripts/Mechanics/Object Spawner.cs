@@ -7,6 +7,8 @@ public class ObjectSpawner : MonoBehaviour
     [SerializeField]
     private float initialDelay,
         cooldown = 5f;
+    [SerializeField]
+    private Transform spawnOrigin;
     private float timeToSpawn;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -19,9 +21,9 @@ public class ObjectSpawner : MonoBehaviour
     void FixedUpdate()
     {
         timeToSpawn -= Time.deltaTime;
-        if(timeToSpawn <= 0 )
+        if (timeToSpawn <= 0)
         {
-            Instantiate(toSpawn, transform.position, transform.rotation);
+            Instantiate(toSpawn, spawnOrigin.position, spawnOrigin.rotation);
             timeToSpawn = cooldown;
         }
     }
