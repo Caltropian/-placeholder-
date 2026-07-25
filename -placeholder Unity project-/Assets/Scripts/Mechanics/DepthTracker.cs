@@ -25,6 +25,7 @@ public class DepthTracker : MonoBehaviour
     {
         float previousDepthLevel = currentDepthLevel;
         float currentDepthDifference = startPosition.position.y - playerPositon.position.y;
+        if (currentDepthDifference < 0) currentDepthDifference = 0;
         currentDepthLevel = Mathf.FloorToInt(currentDepthDifference / depthChunckSize);
         if (currentDepthLevel != previousDepthLevel)
         {

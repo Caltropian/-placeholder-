@@ -77,12 +77,10 @@ public class PlayerAudioEmitter : IAudioEmitter
         {
             _swimmingEmitter.Stop();
             willStopAudioEmitter = true;
-            Debug.Log("Stopping Swimming Audio");
             return;
         }
         willStopAudioEmitter = false;
         _swimmingEmitter.Play();
-        Debug.Log("Playing Swimming Audio.");
     }
     public void PlaySfx(PlayerSFXTypes type)
     {
@@ -91,7 +89,8 @@ public class PlayerAudioEmitter : IAudioEmitter
             Debug.LogWarning("No FMODEvent assigned to " + type.ToString());
             return;
         }
-        Debug.Log("Playing Target Audio. (oneshot)");
+        Debug.Log(type.ToString());
+        itemCounts[type].PlayOneShot();
     }
     public void ChangeSurfacingStrength(float state)
     {
