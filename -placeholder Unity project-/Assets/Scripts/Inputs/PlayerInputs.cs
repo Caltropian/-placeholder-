@@ -18,6 +18,7 @@ public class PlayerInputs : IInputReciever
 
     [SerializeField]
     private Collider2D swimCol;
+    [SerializeField]
     private Collider2D walkCol;
 
     private bool _isUnderwater = false;
