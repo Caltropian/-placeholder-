@@ -18,5 +18,5 @@ MonoBehaviour:
       Data2: 1263376062
       Data3: 1008699274
       Data4: 516258095
-    Path: event:/plunge_into_water
+    Path: event:/plunging
   _paramNames: []
