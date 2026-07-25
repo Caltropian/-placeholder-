@@ -1,5 +1,4 @@
 using System.Collections;
-using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -76,13 +75,12 @@ namespace Prototype_jpxls
         }
         public void PerformSwim(Vector2 movementAxis)
         {
-            /* if (!playerStamina.CanDash()) return;
-            Assert.AreNotEqual(movementAxis.magnitude, 0);
+            if (!playerStamina.CanDash()) return;
             swimDirection = movementAxis;
             if (swimProcess != null) StopCoroutine(swimProcess);
             swimProcess = PerformSwimMovement(swimDirection, extraSwimSpeed, swimRamptownTime);
             StartCoroutine(swimProcess);
-            onSwimmingAction?.Invoke(); */
+            onSwimmingAction?.Invoke();
         }
 
         private IEnumerator PerformSwimMovement(Vector2 movementAxis, float swimSpeed, float rampDownTime)
