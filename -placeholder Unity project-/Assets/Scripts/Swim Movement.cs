@@ -1,9 +1,15 @@
-using System.Runtime.CompilerServices;
+
 using UnityEngine;
-using UnityEngine.InputSystem;
+using UnityEngine.SocialPlatforms;
 
 public class SwimMovement : MonoBehaviour
 {
+    internal enum RotationMethod
+    {
+        MoveTowardsAngle,
+        NoSmoothing,
+        RotateOnSideKeys
+    }
     [Header("Movement Parameters")]
     [SerializeField]
     private float swimSpeed = 4f;
@@ -19,10 +25,17 @@ public class SwimMovement : MonoBehaviour
 
     [Header("Rotation Parameters")]
     [SerializeField]
+    private float startingRotationSpeed = 8f;
+    [SerializeField]
     private float rotationSpeed = 1f;
+    [SerializeField]
+    private float timeToReachMaxSpeed = 0.4f;
     [Header("Dependencies")]
-
     private Rigidbody2D rb2d;
+    [SerializeField]
+    private RotationMethod rotationMethod;
+
+    private float localRotationTimer = 0.0f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -30,12 +43,20 @@ public class SwimMovement : MonoBehaviour
         rb2d = GetComponent<Rigidbody2D>();
 
     }
-
+    void OnDisable()
+    {
+        if (!gameObject.scene.isLoaded) return;
+        AudioContext.Instance.PlayerAudioEmitter.PlaySwimmingWaterSfx(stopAudio: true);
+    }
     private Vector2 moveValue = new(0, 0);
     public bool IsBoosting = false;
     public bool IsMoving = false;
     public void Move(bool isMoving, Vector2 normalizedAxis)
     {
+        if (normalizedAxis.x != moveValue.x)
+        {
+            localRotationTimer = 0;
+        }
         moveValue = normalizedAxis;
         IsMoving = isMoving;
     }
@@ -45,10 +66,12 @@ public class SwimMovement : MonoBehaviour
     }
     void FixedUpdate()
     {
-        Vector2 currentVelocity = rb2d.linearVelocity;
         Vector2 moveForce = moveValue * swimSpeed;
         Vector2 boostForce = Vector2.zero;
-
+        if (rotationMethod == RotationMethod.RotateOnSideKeys)
+        {
+            moveForce = moveValue.y * swimSpeed * transform.up;
+        }
         if (IsBoosting)
         {
             strokeCooldown -= Time.deltaTime * strokeHoldModifier;
@@ -57,6 +80,8 @@ public class SwimMovement : MonoBehaviour
             {
                 boostForce = angle_to_vector(transform.rotation.eulerAngles.z) * boostSpeed;
                 strokeCooldown = strokeMaxCooldown;
+                //Play BreastStroke Oneshot
+                AudioContext.Instance.PlayerAudioEmitter.PlaySfx(PlayerAudioEmitter.PlayerSFXTypes.Breaststroke);
             }
         }
         else
@@ -69,11 +94,37 @@ public class SwimMovement : MonoBehaviour
 
         if (IsMoving)
         {
-            //Slowly turns towards direction of movement
-            float desiredRotation = vector_to_angle(rb2d.linearVelocity);
-            float currentRotation = transform.rotation.eulerAngles.z;
+            if (rotationMethod == RotationMethod.MoveTowardsAngle)
+            {
+                float desiredRotation = vector_to_angle(rb2d.linearVelocity);
+                float currentRotation = transform.rotation.eulerAngles.z;
+                rb2d.MoveRotation(Mathf.MoveTowardsAngle(currentRotation, desiredRotation, rotationSpeed));
+            }
+            else if (rotationMethod == RotationMethod.RotateOnSideKeys)
+            {
 
-            rb2d.MoveRotation(Mathf.MoveTowardsAngle(currentRotation, desiredRotation, rotationSpeed * Mathf.Clamp(rb2d.linearVelocity.magnitude / 3, 0, 1)));
+                localRotationTimer += Time.fixedDeltaTime / timeToReachMaxSpeed;
+                float finalRotationSpeed = rotationSpeed * Mathf.SmoothStep(startingRotationSpeed, rotationSpeed, localRotationTimer);
+                if (IsBoosting) finalRotationSpeed *= boostSteerMod;
+                rb2d.MoveRotation(rb2d.rotation + (moveValue.x * -1 * finalRotationSpeed * Time.fixedDeltaTime));
+            }
+            else
+            {
+                if (vector_to_angle(rb2d.linearVelocity) != float.NaN)
+                {
+                    rb2d.rotation = vector_to_angle(rb2d.linearVelocity);
+                }
+            }
+        }
+        //Instead of isMoving, maybe do volume-based according to linearVelocity.
+        if (IsMoving)
+        {
+            //Trigger Audio SFX
+            AudioContext.Instance.PlayerAudioEmitter.PlaySwimmingWaterSfx(stopAudio: false);
+        }
+        else if (!IsBoosting)
+        {
+            AudioContext.Instance.PlayerAudioEmitter.PlaySwimmingWaterSfx(stopAudio: true);
         }
     }
     /// <summary>

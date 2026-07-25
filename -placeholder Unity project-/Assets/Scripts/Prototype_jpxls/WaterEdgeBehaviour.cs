@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Assertions.Must;
 
 public class WaterEdgeBehaviour : MonoBehaviour
 {
@@ -18,6 +19,7 @@ public class WaterEdgeBehaviour : MonoBehaviour
     Rigidbody2D objRigidbody;
     PlayerState playerState;
     PlayerInputs playerInputs;
+    private bool hasSurfaced = false;
 
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -34,6 +36,7 @@ public class WaterEdgeBehaviour : MonoBehaviour
                 upperGravityMax = nonPlungableGravity;
                 lowerGravityMax = nonPlungableGravity;
             }
+            hasSurfaced = false;
         }
     }
     void OnTriggerExit2D(Collider2D collision)
@@ -66,6 +69,14 @@ public class WaterEdgeBehaviour : MonoBehaviour
             //Get Difference in Y
             float yDiff = objRigidbody.position.y - objectCenter.position.y;
             float lowerYDiff = objRigidbody.position.y - lowerEdge.position.y;
+            if (Mathf.Approximately(yDiff, 0))
+            {
+                if (!hasSurfaced)
+                {
+                    AudioContext.Instance.PlayerAudioEmitter.PlaySfx(PlayerAudioEmitter.PlayerSFXTypes.Surfacing);
+                    hasSurfaced = true;
+                }
+            }
             //If the player is below the center point.
             if (yDiff <= 0)
             {
@@ -91,16 +102,6 @@ public class WaterEdgeBehaviour : MonoBehaviour
                 }
                 if (IsPlungable) playerInputs.CanPlunge = true;
             }
-            /*if (objRigidbody.position.y >= upperEdge.position.y)
-            {
-                Debug.Log("Adding force");
-                objRigidbody.AddForceY(-upperEdgeForce, ForceMode2D.Force);
-            }
-            if (objRigidbody.position.y <= lowerEdge.position.y)
-            {
-                Debug.Log("Adding force");
-                objRigidbody.AddForceY(lowerEdgeForce, ForceMode2D.Force);
-            }*/
         }
     }
 }

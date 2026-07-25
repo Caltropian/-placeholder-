@@ -19,6 +19,8 @@ public class PlayerState : MonoBehaviour
     private Rigidbody2D rb2d;
     [SerializeField]
     private PlayerInputs playerInputs;
+    private bool hasFloorBeneath;
+    public bool HasFloorBeneath => hasFloorBeneath;
     void Awake()
     {
         oxygenTracker = oxygenTracker != null ? oxygenTracker : GetComponentInChildren<OxygenTracker>();
@@ -48,6 +50,12 @@ public class PlayerState : MonoBehaviour
             return _currState;
         }
     }
+    public void CheckIfFloorBeneath(bool hasFloor)
+    {
+        if (_currState == PlayerStates.UNDERWATER) return;
+        hasFloorBeneath = hasFloor;
+    }
+
     private void ResetToInitialState()
     {
         oxygenTracker.ResetState();

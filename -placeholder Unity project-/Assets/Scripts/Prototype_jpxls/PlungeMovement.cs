@@ -45,6 +45,7 @@ public class PlungeMovement : MonoBehaviour
         if (timer >= plungeCD && WillPlunge)
         {
             rb.AddForce(directionToPlunge * plungePower, ForceMode2D.Impulse);
+            AudioContext.Instance.PlayerAudioEmitter.PlaySfx(PlayerAudioEmitter.PlayerSFXTypes.Plunging);
             timer = 0.0f;
             WillPlunge = false;
         }
