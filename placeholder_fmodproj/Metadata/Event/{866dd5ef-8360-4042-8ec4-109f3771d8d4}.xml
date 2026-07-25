@@ -128,7 +128,7 @@
 			<value>596.83519424460428</value>
 		</property>
 		<property name="startOffset">
-			<value>1</value>
+			<value>49.5</value>
 		</property>
 		<property name="looping">
 			<value>true</value>
@@ -219,7 +219,7 @@
 			<value>startOffset</value>
 		</property>
 		<property name="amount">
-			<value>100</value>
+			<value>94</value>
 		</property>
 	</object>
 	<object class="FadeCurve" id="{3bf81a41-4359-4497-9e40-7dd54cb4f13a}">
@@ -278,12 +278,12 @@
 			<value>0</value>
 		</property>
 		<property name="curveShape">
-			<value>-0.2547189</value>
+			<value>-1.00000048</value>
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{8ba56341-2387-4805-ad77-0d530f001a25}">
 		<property name="position">
-			<value>0</value>
+			<value>4.1791658020256461</value>
 		</property>
 		<property name="value">
 			<value>1</value>
