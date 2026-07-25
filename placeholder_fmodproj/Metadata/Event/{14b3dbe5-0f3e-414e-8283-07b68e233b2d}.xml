@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="Event" id="{14b3dbe5-0f3e-414e-8283-07b68e233b2d}">
 		<property name="name">
-			<value>emerge_from_water</value>
+			<value>surfacing</value>
 		</property>
 		<property name="outputFormat">
 			<value>1</value>
