@@ -1,3 +1,3 @@
-/[..]Unsaved
-/[..]User
-/[..]Cache
+/.cache
+/.user
+/.unsaved
