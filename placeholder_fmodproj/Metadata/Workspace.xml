@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.03.00">
 	<object class="Workspace" id="{bacb3c30-98da-4960-a0ce-92c940b1d2ad}">
+		<property name="builtBanksOutputDirectory">
+			<value>../-placeholder Unity project-/FMODAssets</value>
+		</property>
 		<relationship name="masterEventFolder">
 			<destination>{78dd9256-84cc-47f8-86ad-5b7880f0e6f2}</destination>
 		</relationship>
