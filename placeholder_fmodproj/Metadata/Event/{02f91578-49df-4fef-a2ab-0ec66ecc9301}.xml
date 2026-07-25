@@ -496,7 +496,7 @@
 			<value>0.25</value>
 		</property>
 		<property name="maximum">
-			<value>0.5</value>
+			<value>0.49000000953674316</value>
 		</property>
 		<relationship name="parameter">
 			<destination>{b2131321-3754-490f-8dc2-acb84209cdaf}</destination>
@@ -529,7 +529,7 @@
 			<value>0.25</value>
 		</property>
 		<property name="maximum">
-			<value>0.5</value>
+			<value>0.49000000953674316</value>
 		</property>
 		<relationship name="parameter">
 			<destination>{b2131321-3754-490f-8dc2-acb84209cdaf}</destination>
@@ -540,7 +540,7 @@
 			<value>0.5</value>
 		</property>
 		<property name="maximum">
-			<value>0.75</value>
+			<value>0.74000000953674316</value>
 		</property>
 		<relationship name="parameter">
 			<destination>{b2131321-3754-490f-8dc2-acb84209cdaf}</destination>
@@ -551,7 +551,7 @@
 			<value>0.25</value>
 		</property>
 		<property name="maximum">
-			<value>0.5</value>
+			<value>0.49000000953674316</value>
 		</property>
 		<relationship name="parameter">
 			<destination>{b2131321-3754-490f-8dc2-acb84209cdaf}</destination>
@@ -562,7 +562,7 @@
 			<value>0</value>
 		</property>
 		<property name="maximum">
-			<value>0.25</value>
+			<value>0.23999999463558197</value>
 		</property>
 		<relationship name="parameter">
 			<destination>{b2131321-3754-490f-8dc2-acb84209cdaf}</destination>
@@ -573,7 +573,7 @@
 			<value>0.5</value>
 		</property>
 		<property name="maximum">
-			<value>0.75</value>
+			<value>0.74000000953674316</value>
 		</property>
 		<relationship name="parameter">
 			<destination>{b2131321-3754-490f-8dc2-acb84209cdaf}</destination>
@@ -584,7 +584,7 @@
 			<value>0</value>
 		</property>
 		<property name="maximum">
-			<value>0.25</value>
+			<value>0.23999999463558197</value>
 		</property>
 		<relationship name="parameter">
 			<destination>{b2131321-3754-490f-8dc2-acb84209cdaf}</destination>
@@ -595,7 +595,7 @@
 			<value>0.5</value>
 		</property>
 		<property name="maximum">
-			<value>0.75</value>
+			<value>0.74000000953674316</value>
 		</property>
 		<relationship name="parameter">
 			<destination>{b2131321-3754-490f-8dc2-acb84209cdaf}</destination>
@@ -628,7 +628,7 @@
 			<value>0</value>
 		</property>
 		<property name="maximum">
-			<value>0.25</value>
+			<value>0.23999999463558197</value>
 		</property>
 		<relationship name="parameter">
 			<destination>{b2131321-3754-490f-8dc2-acb84209cdaf}</destination>
