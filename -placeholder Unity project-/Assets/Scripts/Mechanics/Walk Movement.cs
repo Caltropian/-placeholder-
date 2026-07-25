@@ -29,8 +29,9 @@ public class WalkMovement : MonoBehaviour
     }
     void OnDisable()
     {
-        if (AudioContext.Instance)
-        { AudioContext.Instance.PlayerAudioEmitter.PlaySwimmingWaterSfx(stopAudio: true); }
+
+        if (!gameObject.scene.isLoaded) return;
+        AudioContext.Instance.PlayerAudioEmitter.PlaySwimmingWaterSfx(stopAudio: true);
     }
 
 

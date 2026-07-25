@@ -1,6 +1,5 @@
 using System.Linq;
 using UnityEngine;
-using UnityEngine.UIElements.Experimental;
 
 public class AudioContext : Singleton<AudioContext>
 {
@@ -11,7 +10,6 @@ public class AudioContext : Singleton<AudioContext>
 
     private PlayerAudioEmitter _playerAudioEmitter;
     public PlayerAudioEmitter PlayerAudioEmitter => _playerAudioEmitter;
-
 
 
     protected override void Awake()

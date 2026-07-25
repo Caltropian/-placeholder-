@@ -45,10 +45,8 @@ public class SwimMovement : MonoBehaviour
     }
     void OnDisable()
     {
-        if (AudioContext.Instance != null)
-        {
-            AudioContext.Instance.PlayerAudioEmitter.PlaySwimmingWaterSfx(stopAudio: true);
-        }
+        if (!gameObject.scene.isLoaded) return;
+        AudioContext.Instance.PlayerAudioEmitter.PlaySwimmingWaterSfx(stopAudio: true);
     }
     private Vector2 moveValue = new(0, 0);
     public bool IsBoosting = false;
