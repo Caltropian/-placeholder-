@@ -5,6 +5,8 @@ public class WalkMovement : MonoBehaviour
     [Header("Movement Parameters")]
     [SerializeField]
     private float walkSpeed = 1f;
+    [SerializeField]
+    private PlayerState playerState;
 
     private Rigidbody2D rb2d;
 
@@ -13,6 +15,10 @@ public class WalkMovement : MonoBehaviour
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
+        if (playerState == null)
+        {
+            playerState = GetComponent<PlayerState>();
+        }
     }
 
     private Vector2 moveValue = new(0, 0);
@@ -21,8 +27,13 @@ public class WalkMovement : MonoBehaviour
         moveValue = normalizedAxis;
         IsMoving = isMoving;
     }
+    void OnDisable()
+    {
+        if (AudioContext.Instance)
+        { AudioContext.Instance.PlayerAudioEmitter.PlaySwimmingWaterSfx(stopAudio: true); }
+    }
 
-    
+
     void FixedUpdate()
     {
         if (moveValue.y > 0)
@@ -31,7 +42,14 @@ public class WalkMovement : MonoBehaviour
         }
         rb2d.AddForce(moveValue * walkSpeed);
         float currentRotation = transform.rotation.eulerAngles.z;
-
         rb2d.MoveRotation(Mathf.MoveTowardsAngle(currentRotation, 0, 1));
+        if (!playerState.HasFloorBeneath && IsMoving)
+        {
+            AudioContext.Instance.PlayerAudioEmitter.PlaySwimmingWaterSfx(stopAudio: false);
+        }
+        else
+        {
+            AudioContext.Instance.PlayerAudioEmitter.PlaySwimmingWaterSfx(stopAudio: true);
+        }
     }
 }
