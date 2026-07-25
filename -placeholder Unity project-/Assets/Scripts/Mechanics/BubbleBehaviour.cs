@@ -2,19 +2,24 @@ using UnityEngine;
 
 public class BubbleBehaviour : MonoBehaviour
 {
+    private static readonly int DieHash = Animator.StringToHash("Die");
     private Rigidbody2D rb2d;
     [SerializeField]
     private float riseSpeed = 0.1f,
         swayIntensity = 0.1f;
     private float timeOfCreation;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    [SerializeField]
+    Collider2D circleCollider;
+    [SerializeField]
+    private Animator animator;
+    private float timeToDie;
+
     void OnEnable()
     {
         rb2d = GetComponent<Rigidbody2D>();
         timeOfCreation = Time.time;
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         Vector2 currentPos = transform.position;
@@ -25,7 +30,18 @@ public class BubbleBehaviour : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        collision.gameObject.BroadcastMessage("OnBubbleCollide", SendMessageOptions.DontRequireReceiver);
+        if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("CaveSurface"))
+        {
+            collision.gameObject.BroadcastMessage("OnBubbleCollide", SendMessageOptions.DontRequireReceiver);
+            circleCollider.enabled = false;
+            animator.SetTrigger(DieHash);
+            AnimatorClipInfo[] m_CurrentClipInfo = animator.GetCurrentAnimatorClipInfo(0);
+            timeToDie = m_CurrentClipInfo[0].clip.length;
+            Invoke(nameof(Die), timeToDie);
+        }
+    }
+    private void Die()
+    {
         Destroy(gameObject);
     }
 }
