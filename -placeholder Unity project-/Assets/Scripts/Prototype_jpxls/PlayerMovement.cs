@@ -1,8 +1,6 @@
 using System;
 using System.Collections;
 using System.Runtime.CompilerServices;
-using NUnit.Framework;
-using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -80,7 +78,6 @@ namespace Prototype_jpxls
         public void PerformSwim(Vector2 movementAxis)
         {
             if (!playerStamina.CanDash()) return;
-            Assert.AreNotEqual(movementAxis.magnitude, 0);
             swimDirection = movementAxis;
             if (swimProcess != null) StopCoroutine(swimProcess);
             swimProcess = PerformSwimMovement(swimDirection, extraSwimSpeed, swimRamptownTime);
