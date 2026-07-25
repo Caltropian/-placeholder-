@@ -41,7 +41,8 @@ public class WalkMovement : MonoBehaviour
         {
             moveValue.y = 0f;
         }
-        rb2d.AddForce(moveValue * walkSpeed);
+        float gravityModifier = rb2d.gravityScale > 1 ? rb2d.gravityScale : 1;
+        rb2d.AddForce(moveValue * walkSpeed * gravityModifier);
         float currentRotation = transform.rotation.eulerAngles.z;
         rb2d.MoveRotation(Mathf.MoveTowardsAngle(currentRotation, 0, 1));
         if (!playerState.HasFloorBeneath && IsMoving)

@@ -16,6 +16,8 @@ public class WaterEdgeBehaviour : MonoBehaviour
     private float nonPlungableGravity = 0.1f;
     [SerializeField]
     private bool IsPlungable = true;
+    [SerializeField]
+    private float WaterLineGraceValue = 0.05f;
     Rigidbody2D objRigidbody;
     PlayerState playerState;
     PlayerInputs playerInputs;
@@ -43,7 +45,7 @@ public class WaterEdgeBehaviour : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            if (objRigidbody.position.y - objectCenter.position.y < 0)
+            if (objRigidbody.position.y - lowerEdge.position.y < 0)
             {
                 objRigidbody.gravityScale = 0;
                 if (playerState.CurrentState != PlayerState.PlayerStates.UNDERWATER)
@@ -53,7 +55,7 @@ public class WaterEdgeBehaviour : MonoBehaviour
             }
             else
             {
-                objRigidbody.gravityScale = upperGravityMax;
+                objRigidbody.gravityScale = 1;
             }
             playerInputs.CanPlunge = false;
             objRigidbody = null;
@@ -69,7 +71,7 @@ public class WaterEdgeBehaviour : MonoBehaviour
             //Get Difference in Y
             float yDiff = objRigidbody.position.y - objectCenter.position.y;
             float lowerYDiff = objRigidbody.position.y - lowerEdge.position.y;
-            if (Mathf.Approximately(yDiff, 0))
+            if (Mathf.Abs(yDiff) < WaterLineGraceValue)
             {
                 if (!hasSurfaced)
                 {

@@ -16,9 +16,11 @@ public class AudioRibbitEmitter : MonoBehaviour
     }
     [SerializeField]
     private Range2d ribbitTimeRange;
-    [HideInInspector]
+    [SerializeField]
     public PlayerState.PlayerStates CurrentState;
+    [SerializeField]
     float timerToRibbit = 0f;
+    [SerializeField]
     private float randomizedValue;
     void OnEnable()
     {
@@ -40,5 +42,9 @@ public class AudioRibbitEmitter : MonoBehaviour
             randomizedValue = UnityEngine.Random.Range(ribbitTimeRange.minValue, ribbitTimeRange.maxValue);
         }
 
+    }
+    public void ChangeState(PlayerState.PlayerStates playerStates)
+    {
+        CurrentState = playerStates;
     }
 }
