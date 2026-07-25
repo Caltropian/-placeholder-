@@ -31,6 +31,9 @@
 		<relationship name="timeline">
 			<destination>{a67f10ab-6102-4a01-bce3-f710c7a6de31}</destination>
 		</relationship>
+		<relationship name="banks">
+			<destination>{d746a972-b114-4433-b40a-3ceaab57a2cb}</destination>
+		</relationship>
 	</object>
 	<object class="EventMixer" id="{c8366e1c-1b96-4a05-82a6-bb9db2f6ad65}">
 		<relationship name="masterBus">
@@ -94,7 +97,6 @@
 			<destination>{0a85d118-00f0-4bd1-9747-48649bb367af}</destination>
 			<destination>{bd5a0045-a44d-4c19-bf68-a0563e228790}</destination>
 			<destination>{0d0b49c1-006a-4c44-8238-3a84d022e9c9}</destination>
-			<destination>{dd0f9dc6-2497-4d70-8efd-2b54b11b7aef}</destination>
 			<destination>{4bf1d965-0420-4dc9-b1d0-163ebd6c5082}</destination>
 			<destination>{8a419ab1-5bfa-4f9f-9a70-69068ffdaa8c}</destination>
 			<destination>{06ba7883-5b74-4bac-a15e-9d31082a2c1a}</destination>
@@ -142,11 +144,6 @@
 			<destination>{fbb06152-a769-447f-a0d2-121a8df8e54f}</destination>
 		</relationship>
 	</object>
-	<object class="SingleSound" id="{dd0f9dc6-2497-4d70-8efd-2b54b11b7aef}">
-		<relationship name="audioFile">
-			<destination>{a519ebfb-0f2a-4455-83f3-295bed9253ee}</destination>
-		</relationship>
-	</object>
 	<object class="SingleSound" id="{4bf1d965-0420-4dc9-b1d0-163ebd6c5082}">
 		<relationship name="audioFile">
 			<destination>{dc7d7113-5476-49ec-87bd-357fac9dfca7}</destination>
@@ -170,6 +167,7 @@
 	<object class="MixerBusEffectChain" id="{43520d53-5202-45b8-8b09-b0152ba56bf7}">
 		<relationship name="effects">
 			<destination>{ec9fc3d7-367b-45ae-a127-a497fcdca27a}</destination>
+			<destination>{b17ce1e7-f588-4d67-94cc-40c15fc76f37}</destination>
 			<destination>{84171957-15a8-4255-94ae-dd93d9ddda95}</destination>
 			<destination>{752325d6-3a90-4c04-895b-4c226199dd76}</destination>
 		</relationship>
@@ -177,6 +175,17 @@
 	<object class="MixerBusPanner" id="{b2eb9944-c536-456c-841e-92ab03c12ced}" />
 	<object class="MixerBusFader" id="{546368bc-89cc-48a3-9e95-062b982f0e33}" />
 	<object class="MixerBusFader" id="{ec9fc3d7-367b-45ae-a127-a497fcdca27a}" />
+	<object class="PitchShifterEffect" id="{b17ce1e7-f588-4d67-94cc-40c15fc76f37}">
+		<property name="pitch">
+			<value>0.610000014</value>
+		</property>
+		<property name="overlap">
+			<value>1</value>
+		</property>
+		<property name="maxChannels">
+			<value>6.5999999</value>
+		</property>
+	</object>
 	<object class="ThreeEQEffect" id="{84171957-15a8-4255-94ae-dd93d9ddda95}">
 		<property name="midGain">
 			<value>-4.5</value>
@@ -187,7 +196,13 @@
 	</object>
 	<object class="SFXReverbEffect" id="{752325d6-3a90-4c04-895b-4c226199dd76}">
 		<property name="decayTime">
-			<value>2300</value>
+			<value>1800</value>
+		</property>
+		<property name="diffusion">
+			<value>68</value>
+		</property>
+		<property name="wetLevel">
+			<value>-13</value>
 		</property>
 	</object>
 </objects>
