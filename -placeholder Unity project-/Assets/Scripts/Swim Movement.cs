@@ -88,7 +88,10 @@ public class SwimMovement : MonoBehaviour
         if (IsBoosting)
         {
             strokeCooldown -= Time.deltaTime * strokeHoldModifier;
-            moveForce *= boostSteerMod;
+            if (strokeCooldown < 1)
+            {
+                moveForce *= Mathf.Lerp(3, boostSteerMod, strokeCooldown);
+            }
             if (strokeCooldown < 0)
             {
                 boostForce = angle_to_vector(legs.transform.rotation.eulerAngles.z) * boostSpeed;
