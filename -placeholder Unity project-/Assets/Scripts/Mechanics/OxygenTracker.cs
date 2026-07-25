@@ -143,7 +143,11 @@ public class OxygenTracker : IPausable
 
     public void OnBubbleCollide()
     {
-        _currentOxygen += airBubbleTime;
+        if (_isOnGracePeriod)
+        {
+            _isOnGracePeriod = false;
+        }
+        CurrentOxygen = Mathf.Clamp((airBubbleTime / timeToDepleteOxygen) + CurrentOxygen, 0, _maxOxygen);
     }
 
 }

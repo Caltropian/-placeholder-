@@ -169,5 +169,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f6126b1e1c8b5e4296341a0cc883f61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BubbleBehaviour
-  riseSpeed: 0.5
+  riseSpeed: 3
   swayIntensity: 0.005
