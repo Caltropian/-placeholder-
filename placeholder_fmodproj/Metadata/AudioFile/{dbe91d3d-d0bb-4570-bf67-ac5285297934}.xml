@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{dbe91d3d-d0bb-4570-bf67-ac5285297934}">
+		<property name="assetPath">
+			<value>Light splashes.mp3</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>7.7583673469387753</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{d3eb4987-77b5-4ca9-abed-2b992aae2720}</destination>
+		</relationship>
+	</object>
+</objects>

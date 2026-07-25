@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="ParameterPreset" id="{9756bbb3-0de9-4166-b548-f97f39f6c55b}">
+		<property name="name">
+			<value>in_air_pocket</value>
+		</property>
+		<relationship name="folder">
+			<destination>{0ee4a762-adf9-4a60-9406-61ed7332c053}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{8274914e-a68c-4482-9c73-454bfde8c7c0}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{8274914e-a68c-4482-9c73-454bfde8c7c0}">
+		<property name="parameterType">
+			<value>2</value>
+		</property>
+		<property name="maximum">
+			<value>2</value>
+		</property>
+		<property name="enumerationLabels">
+			<value>true</value>
+			<value>false</value>
+		</property>
+		<property name="initialValue">
+			<value>1</value>
+		</property>
+	</object>
+</objects>

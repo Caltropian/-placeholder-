@@ -10,6 +10,7 @@ public class PlayerState : MonoBehaviour
         UNDERWATER,
         ABOVEWATER
     }
+    [SerializeField]
     private PlayerStates _currState;
     public UnityEvent<PlayerStates> OnStateChange;
     public Transform CurrentCheckpoint;
