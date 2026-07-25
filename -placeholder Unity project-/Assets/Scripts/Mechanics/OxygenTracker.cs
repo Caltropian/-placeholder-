@@ -26,6 +26,9 @@ public class OxygenTracker : IPausable
     [Tooltip("How much time (in seconds) will the grace period, before death, last. (0 for no Grace Period)")]
     [SerializeField]
     private Range2 gracePeriodBeforeDeath = new(1f, 2f);
+    [Tooltip("How much time (in seconds) will be added on collision with an air bubble")]
+    [SerializeField]
+    private float airBubbleTime = 10f;
 
     [Header("Adjustable Settings")]
     [SerializeField]
@@ -136,6 +139,11 @@ public class OxygenTracker : IPausable
         _currentOxygen = _maxOxygen;
         _isOnGracePeriod = false;
         _ranOutOfOxygen = false;
+    }
+
+    public void OnBubbleCollide()
+    {
+        _currentOxygen += airBubbleTime;
     }
 
 }

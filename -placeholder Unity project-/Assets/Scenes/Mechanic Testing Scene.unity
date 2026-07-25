@@ -1558,6 +1558,63 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3fdb2c48588cd742b046ac136db20b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerState
+--- !u!1001 &5907669069158678726
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5685900734514058863, guid: 36a1288d1cf50f342bfd47ac3baaa4da, type: 3}
+      propertyPath: m_Name
+      value: Air Spawner
+      objectReference: {fileID: 0}
+    - target: {fileID: 8617011970830908095, guid: 36a1288d1cf50f342bfd47ac3baaa4da, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.59
+      objectReference: {fileID: 0}
+    - target: {fileID: 8617011970830908095, guid: 36a1288d1cf50f342bfd47ac3baaa4da, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.47171
+      objectReference: {fileID: 0}
+    - target: {fileID: 8617011970830908095, guid: 36a1288d1cf50f342bfd47ac3baaa4da, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8617011970830908095, guid: 36a1288d1cf50f342bfd47ac3baaa4da, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8617011970830908095, guid: 36a1288d1cf50f342bfd47ac3baaa4da, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8617011970830908095, guid: 36a1288d1cf50f342bfd47ac3baaa4da, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8617011970830908095, guid: 36a1288d1cf50f342bfd47ac3baaa4da, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8617011970830908095, guid: 36a1288d1cf50f342bfd47ac3baaa4da, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8617011970830908095, guid: 36a1288d1cf50f342bfd47ac3baaa4da, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8617011970830908095, guid: 36a1288d1cf50f342bfd47ac3baaa4da, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 36a1288d1cf50f342bfd47ac3baaa4da, type: 3}
 --- !u!1001 &6390841661151222372
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1618,6 +1675,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5412887942029353447, guid: 0f23cb2d50bba7c42b2c70a57d043f33, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5412887942029353447, guid: 0f23cb2d50bba7c42b2c70a57d043f33, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5412887942029353447, guid: 0f23cb2d50bba7c42b2c70a57d043f33, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5412887942029353447, guid: 0f23cb2d50bba7c42b2c70a57d043f33, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1663,6 +1736,10 @@ PrefabInstance:
       propertyPath: spotlightMask
       value: 
       objectReference: {fileID: 2066740406}
+    - target: {fileID: 8293418615002791496, guid: a497b168cb3b85647b7e2b2d68940a04, type: 3}
+      propertyPath: skipStartScreen
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8293418615002791496, guid: a497b168cb3b85647b7e2b2d68940a04, type: 3}
       propertyPath: 'startObjects.Array.data[0]'
       value: 
@@ -1727,3 +1804,4 @@ SceneRoots:
   - {fileID: 1168305605}
   - {fileID: 245391771}
   - {fileID: 8817440781849229570}
+  - {fileID: 5907669069158678726}
