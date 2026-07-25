@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{59ab8d4d-30f9-4cef-92d2-2030f9a55991}">
+		<property name="assetPath">
+			<value>swim air pocket #1.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.6873015873015873</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{d3eb4987-77b5-4ca9-abed-2b992aae2720}</destination>
+		</relationship>
+	</object>
+</objects>
