@@ -264,7 +264,7 @@ CapsuleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4144288094768225815}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
@@ -361,6 +361,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 7366819034853189078}
+        m_TargetAssemblyTypeName: AudioRibbitEmitter, Assembly-CSharp
+        m_MethodName: ChangeState
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   CurrentCheckpoint: {fileID: 0}
   oxygenTracker: {fileID: 6550755558218920920}
   playerInputs: {fileID: 1115967381933341646}
@@ -379,7 +391,8 @@ MonoBehaviour:
   swimMovement: {fileID: 5355222262597436992}
   walkMovement: {fileID: 7214699053625765853}
   plungeMovement: {fileID: 2873401005781656559}
-  swimCol: {fileID: 0}
+  swimCol: {fileID: 8383278043340244375}
+  walkCol: {fileID: 439384878431623651}
   _canPlunge: 0
 --- !u!114 &7214699053625765853
 MonoBehaviour:
@@ -395,6 +408,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WalkMovement
   walkSpeed: 6
   playerState: {fileID: -6607255052257625683}
+  legs: {fileID: 316712274426165008}
   IsMoving: 0
 --- !u!114 &2873401005781656559
 MonoBehaviour:
@@ -431,7 +445,7 @@ CapsuleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4144288094768225815}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
@@ -736,11 +750,11 @@ MonoBehaviour:
   - type: 1
     fmodEvent: {fileID: 0}
   - type: 2
-    fmodEvent: {fileID: 0}
+    fmodEvent: {fileID: 11400000, guid: ea0f0e4697f17d5489f196aa6fd7cea5, type: 2}
   - type: 3
-    fmodEvent: {fileID: 0}
+    fmodEvent: {fileID: 11400000, guid: 1340b2afc4c58024ca010022b83f9b43, type: 2}
   - type: 4
-    fmodEvent: {fileID: 0}
+    fmodEvent: {fileID: 11400000, guid: 381bc39a06be04e4cbdb568c8e672a61, type: 2}
   - type: 5
     fmodEvent: {fileID: 0}
 --- !u!114 &9052740476490874120
@@ -758,13 +772,13 @@ MonoBehaviour:
   CollisionTag: 
   EventReference:
     Guid:
-      Data1: -544005187
-      Data2: 1137399992
-      Data3: 124442045
-      Data4: -648538460
-    Path: event:/placeholder_event
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
   Event: 
-  EventPlayTrigger: 1
+  EventPlayTrigger: 0
   EventStopTrigger: 0
   AllowFadeout: 1
   TriggerOnce: 0
