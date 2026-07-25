@@ -16,6 +16,10 @@ public class PlayerInputs : IInputReciever
     private PlungeMovement plungeMovement;
     #endregion
 
+    [SerializeField]
+    private Collider2D swimCol;
+    private Collider2D walkCol;
+
     private bool _isUnderwater = false;
     [SerializeField]
     private bool _canPlunge;
@@ -117,12 +121,16 @@ public class PlayerInputs : IInputReciever
             _isUnderwater = true;
             walkMovement.enabled = false;
             swimMovement.enabled = true;
+            walkCol.enabled = false;
+            swimCol.enabled = true;
         }
         else
         {
             _isUnderwater = false;
             walkMovement.enabled = true;
             swimMovement.enabled = false;
+            walkCol.enabled = true;
+            swimCol.enabled = false;
         }
     }
 }
