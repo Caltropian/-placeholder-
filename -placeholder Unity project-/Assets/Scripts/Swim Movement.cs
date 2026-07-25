@@ -10,6 +10,10 @@ public class SwimMovement : MonoBehaviour
         NoSmoothing,
         RotateOnSideKeys
     }
+
+    
+
+
     [Header("Movement Parameters")]
     [SerializeField]
     private float swimSpeed = 4f;
@@ -30,6 +34,15 @@ public class SwimMovement : MonoBehaviour
     private float rotationSpeed = 1f;
     [SerializeField]
     private float timeToReachMaxSpeed = 0.4f;
+
+    [Header("Sprites")]
+    [SerializeField]
+    private SpriteRenderer head;
+    [SerializeField]
+    private SpriteRenderer arms;
+    [SerializeField]
+    private GameObject legs;
+
     [Header("Dependencies")]
     private Rigidbody2D rb2d;
     [SerializeField]
@@ -78,7 +91,7 @@ public class SwimMovement : MonoBehaviour
             moveForce *= boostSteerMod;
             if (strokeCooldown < 0)
             {
-                boostForce = angle_to_vector(transform.rotation.eulerAngles.z) * boostSpeed;
+                boostForce = angle_to_vector(legs.transform.rotation.eulerAngles.z) * boostSpeed;
                 strokeCooldown = strokeMaxCooldown;
                 //Play BreastStroke Oneshot
                 AudioContext.Instance.PlayerAudioEmitter.PlaySfx(PlayerAudioEmitter.PlayerSFXTypes.Breaststroke);
@@ -94,7 +107,7 @@ public class SwimMovement : MonoBehaviour
 
         if (IsMoving)
         {
-            if (rotationMethod == RotationMethod.MoveTowardsAngle)
+            /*if (rotationMethod == RotationMethod.MoveTowardsAngle)
             {
                 float desiredRotation = vector_to_angle(rb2d.linearVelocity);
                 float currentRotation = transform.rotation.eulerAngles.z;
@@ -109,12 +122,23 @@ public class SwimMovement : MonoBehaviour
                 rb2d.MoveRotation(rb2d.rotation + (moveValue.x * -1 * finalRotationSpeed * Time.fixedDeltaTime));
             }
             else
-            {
+            {*/
                 if (vector_to_angle(rb2d.linearVelocity) != float.NaN)
                 {
-                    rb2d.rotation = vector_to_angle(rb2d.linearVelocity);
+                    float angle = vector_to_angle(rb2d.linearVelocity);
+                    legs.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+                    if (Mathf.Abs(angle - 180) > 90)
+                    {
+                    head.sortingOrder = 2;
+                    arms.sortingOrder = 3;
+                    }
+                    else
+                    {
+                    head.sortingOrder = 3;
+                    arms.sortingOrder = 2;
+                    }
                 }
-            }
+            //}
         }
         //Instead of isMoving, maybe do volume-based according to linearVelocity.
         if (IsMoving)

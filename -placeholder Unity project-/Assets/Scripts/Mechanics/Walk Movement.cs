@@ -10,6 +10,9 @@ public class WalkMovement : MonoBehaviour
 
     private Rigidbody2D rb2d;
 
+    [SerializeField]
+    private GameObject legs;
+
     public bool IsMoving = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -44,7 +47,7 @@ public class WalkMovement : MonoBehaviour
         float gravityModifier = rb2d.gravityScale > 1 ? rb2d.gravityScale : 1;
         rb2d.AddForce(moveValue * walkSpeed * gravityModifier);
         float currentRotation = transform.rotation.eulerAngles.z;
-        rb2d.MoveRotation(Mathf.MoveTowardsAngle(currentRotation, 0, 1));
+        legs.transform.rotation = Quaternion.Euler(0, 0, Mathf.MoveTowardsAngle(currentRotation, 0, 1));
         if (!playerState.HasFloorBeneath && IsMoving)
         {
             AudioContext.Instance.PlayerAudioEmitter.PlaySwimmingWaterSfx(stopAudio: false, PlayerState.PlayerStates.ABOVEWATER);
