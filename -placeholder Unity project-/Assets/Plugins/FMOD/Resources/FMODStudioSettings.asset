@@ -633,7 +633,7 @@ MonoBehaviour:
   RealChannelSettings: []
   Plugins: []
   MasterBanks:
-  - MasterTracks
+  - Master
   Banks: []
   BanksToLoad: []
   LiveUpdatePort: 9264

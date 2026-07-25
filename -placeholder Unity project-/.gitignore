@@ -127,4 +127,4 @@ Assets/Plugins/FMOD/**/*.bundle text eol=lf
 Assets/Plugins/FMOD/**/Info.plist text eol=lf
 
 #macOS
-$.DS_Store
+*.DS_Store
