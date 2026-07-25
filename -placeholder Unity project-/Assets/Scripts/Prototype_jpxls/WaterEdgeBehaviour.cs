@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Assertions.Must;
 
 public class WaterEdgeBehaviour : MonoBehaviour
 {
@@ -11,8 +12,15 @@ public class WaterEdgeBehaviour : MonoBehaviour
     private float upperGravityMax = 9.8f;
     [SerializeField]
     private float lowerGravityMax = 2.0f;
+    [SerializeField]
+    private float nonPlungableGravity = 0.1f;
+    [SerializeField]
+    private bool IsPlungable = true;
     Rigidbody2D objRigidbody;
     PlayerState playerState;
+    PlayerInputs playerInputs;
+    private bool hasSurfaced = false;
+
 
     void OnTriggerEnter2D(Collider2D collision)
     {
@@ -22,6 +30,13 @@ public class WaterEdgeBehaviour : MonoBehaviour
             //Calling multiple GetComponents like so can be bad for performance.
             objRigidbody = collision.gameObject.GetComponent<Rigidbody2D>();
             playerState = collision.gameObject.GetComponent<PlayerState>();
+            playerInputs = collision.gameObject.GetComponent<PlayerInputs>();
+            if (!IsPlungable)
+            {
+                upperGravityMax = nonPlungableGravity;
+                lowerGravityMax = nonPlungableGravity;
+            }
+            hasSurfaced = false;
         }
     }
     void OnTriggerExit2D(Collider2D collision)
@@ -40,6 +55,7 @@ public class WaterEdgeBehaviour : MonoBehaviour
             {
                 objRigidbody.gravityScale = upperGravityMax;
             }
+            playerInputs.CanPlunge = false;
             objRigidbody = null;
             playerState = null;
         }
@@ -53,6 +69,14 @@ public class WaterEdgeBehaviour : MonoBehaviour
             //Get Difference in Y
             float yDiff = objRigidbody.position.y - objectCenter.position.y;
             float lowerYDiff = objRigidbody.position.y - lowerEdge.position.y;
+            if (Mathf.Approximately(yDiff, 0))
+            {
+                if (!hasSurfaced)
+                {
+                    AudioContext.Instance.PlayerAudioEmitter.PlaySfx(PlayerAudioEmitter.PlayerSFXTypes.Surfacing);
+                    hasSurfaced = true;
+                }
+            }
             //If the player is below the center point.
             if (yDiff <= 0)
             {
@@ -68,25 +92,16 @@ public class WaterEdgeBehaviour : MonoBehaviour
                 {
                     playerState.CurrentState = PlayerState.PlayerStates.UNDERWATER;
                 }
+                playerInputs.CanPlunge = false;
             }
             else
             {
                 if (playerState.CurrentState == PlayerState.PlayerStates.UNDERWATER)
                 {
                     playerState.CurrentState = PlayerState.PlayerStates.ABOVEWATER;
-                    Debug.Log("Switching to above water");
                 }
+                if (IsPlungable) playerInputs.CanPlunge = true;
             }
-            /*if (objRigidbody.position.y >= upperEdge.position.y)
-            {
-                Debug.Log("Adding force");
-                objRigidbody.AddForceY(-upperEdgeForce, ForceMode2D.Force);
-            }
-            if (objRigidbody.position.y <= lowerEdge.position.y)
-            {
-                Debug.Log("Adding force");
-                objRigidbody.AddForceY(lowerEdgeForce, ForceMode2D.Force);
-            }*/
         }
     }
 }

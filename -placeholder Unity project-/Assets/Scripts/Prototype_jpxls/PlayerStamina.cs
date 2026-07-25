@@ -1,7 +1,5 @@
-using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.UIElements.Experimental;
 
 public class PlayerStamina : MonoBehaviour
 {

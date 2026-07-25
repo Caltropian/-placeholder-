@@ -12,15 +12,32 @@ public class PlayerInputs : IInputReciever
     private SwimMovement swimMovement;
     [SerializeField]
     private WalkMovement walkMovement;
+    [SerializeField]
+    private PlungeMovement plungeMovement;
     #endregion
 
     private bool _isUnderwater = false;
+    [SerializeField]
+    private bool _canPlunge;
+    public bool CanPlunge
+    {
+        get
+        {
+            return _canPlunge;
+        }
+        set
+        {
+            _canPlunge = value;
+        }
+    }
+
     protected override void Awake()
     {
         base.Awake();
         playerActions = inputActions.Player;
         playerMovement = playerActions.Move;
         sprint = playerActions.Sprint;
+        CanPlunge = false;
     }
     protected override void OnEnable()
     {
@@ -30,8 +47,10 @@ public class PlayerInputs : IInputReciever
             playerActions.Enable();
             sprint.performed += BoostInput;
             sprint.canceled += CancelledBoostInput;
+
         }
     }
+
     private void BoostInput(InputAction.CallbackContext context)
     {
         if (_isUnderwater)
@@ -54,6 +73,9 @@ public class PlayerInputs : IInputReciever
             sprint.performed -= BoostInput;
             sprint.canceled -= CancelledBoostInput;
             playerActions.Disable();
+            swimMovement.IsBoosting = false;
+            swimMovement.IsMoving = false;
+            walkMovement.IsMoving = false;
         }
     }
     public override void Pause(bool isPaused)
@@ -74,7 +96,11 @@ public class PlayerInputs : IInputReciever
     void Update()
     {
         Vector2 movementAxis = playerMovement.ReadValue<Vector2>();
-        if (_isUnderwater)
+        if (CanPlunge && movementAxis.y < 0)
+        {
+            plungeMovement.Plunge(movementAxis);
+        }
+        else if (_isUnderwater)
         {
             swimMovement.Move(playerMovement.IsPressed(), movementAxis);
         }
