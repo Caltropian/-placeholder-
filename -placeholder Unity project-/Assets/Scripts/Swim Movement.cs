@@ -73,7 +73,7 @@ public class SwimMovement : MonoBehaviour
             float desiredRotation = vector_to_angle(rb2d.linearVelocity);
             float currentRotation = transform.rotation.eulerAngles.z;
 
-            rb2d.MoveRotation(Mathf.MoveTowardsAngle(currentRotation, desiredRotation, rotationSpeed));
+            rb2d.MoveRotation(Mathf.MoveTowardsAngle(currentRotation, desiredRotation, rotationSpeed * Mathf.Clamp(rb2d.linearVelocity.magnitude / 3, 0, 1)));
         }
     }
     /// <summary>
