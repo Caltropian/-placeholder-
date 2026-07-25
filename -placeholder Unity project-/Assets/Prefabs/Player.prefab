@@ -1,5 +1,68 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2796376077292321794
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 263425505685469843}
+  - component: {fileID: 6376127023463047711}
+  m_Layer: 0
+  m_Name: Underwater
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &263425505685469843
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2796376077292321794}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6564768348118281213}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6376127023463047711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2796376077292321794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FMODUnity::FMODUnity.StudioEventEmitter
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 1171906878
+      Data2: 1154186292
+      Data3: 1562980789
+      Data4: -702125329
+    Path: event:/swimming_underwater
+  Event: 
+  EventPlayTrigger: 0
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &4144288094768225815
 GameObject:
   m_ObjectHideFlags: 0
@@ -203,6 +266,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3fdb2c48588cd742b046ac136db20b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerState
+  _currState: 0
   OnStateChange:
     m_PersistentCalls:
       m_Calls:
@@ -221,6 +285,30 @@ MonoBehaviour:
       - m_Target: {fileID: 1115967381933341646}
         m_TargetAssemblyTypeName: PlayerInputs, Assembly-CSharp
         m_MethodName: OnChangedPlayerState
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7366819034853189078}
+        m_TargetAssemblyTypeName: AudioRibbitEmitter, Assembly-CSharp
+        m_MethodName: ChangeState
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: MusicAudioEmitter, Assembly-CSharp
+        m_MethodName: OnChangePlayerState
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -405,6 +493,69 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!1 &6364476586185702471
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2904489810384635220}
+  - component: {fileID: 5217441161058226137}
+  m_Layer: 0
+  m_Name: Abovewater
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2904489810384635220
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6364476586185702471}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6564768348118281213}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5217441161058226137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6364476586185702471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FMODUnity::FMODUnity.StudioEventEmitter
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -1843248046
+      Data2: 1085241683
+      Data3: 1924068506
+      Data4: -935908880
+    Path: event:/swim_air_pocket
+  Event: 
+  EventPlayTrigger: 0
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &6677318686717006386
 GameObject:
   m_ObjectHideFlags: 0
@@ -416,7 +567,6 @@ GameObject:
   - component: {fileID: 6564768348118281213}
   - component: {fileID: 7366819034853189078}
   - component: {fileID: 2262737168995538405}
-  - component: {fileID: 9052740476490874120}
   m_Layer: 0
   m_Name: AudioEmitter
   m_TagString: Untagged
@@ -436,7 +586,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 263425505685469843}
+  - {fileID: 2904489810384635220}
   m_Father: {fileID: 3866518651366380310}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7366819034853189078
@@ -455,6 +607,8 @@ MonoBehaviour:
     minValue: 2
     maxValue: 4
   CurrentState: 0
+  timerToRibbit: 0
+  randomizedValue: 0
 --- !u!114 &2262737168995538405
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -467,51 +621,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e2c3122ab9de7b4e9d442b17975b9ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAudioEmitter
-  _swimmingEmitter: {fileID: 9052740476490874120}
+  _swimmingEmitter: {fileID: 6376127023463047711}
   eventList:
   - type: 0
-    fmodEvent: {fileID: 0}
+    fmodEvent: {fileID: 11400000, guid: 7cfd036bdc2d09a40898c73d54a0eb49, type: 2}
   - type: 1
-    fmodEvent: {fileID: 0}
+    fmodEvent: {fileID: 11400000, guid: 11d218eb87b755448b4e25dd3be73984, type: 2}
   - type: 2
-    fmodEvent: {fileID: 0}
+    fmodEvent: {fileID: 11400000, guid: ea0f0e4697f17d5489f196aa6fd7cea5, type: 2}
   - type: 3
-    fmodEvent: {fileID: 0}
+    fmodEvent: {fileID: 11400000, guid: 1340b2afc4c58024ca010022b83f9b43, type: 2}
   - type: 4
-    fmodEvent: {fileID: 0}
+    fmodEvent: {fileID: 11400000, guid: 381bc39a06be04e4cbdb568c8e672a61, type: 2}
   - type: 5
     fmodEvent: {fileID: 0}
---- !u!114 &9052740476490874120
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6677318686717006386}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: FMODUnity::FMODUnity.StudioEventEmitter
-  CollisionTag: 
-  EventReference:
-    Guid:
-      Data1: -544005187
-      Data2: 1137399992
-      Data3: 124442045
-      Data4: -648538460
-    Path: event:/placeholder_event
-  Event: 
-  EventPlayTrigger: 1
-  EventStopTrigger: 0
-  AllowFadeout: 1
-  TriggerOnce: 0
-  Preload: 0
-  NonRigidbodyVelocity: 0
-  Params: []
-  OverrideAttenuation: 0
-  OverrideMinDistance: 1
-  OverrideMaxDistance: 20
+  _aboveWaterSwimmingEmitter: {fileID: 5217441161058226137}
 --- !u!1001 &1322029826017369228
 PrefabInstance:
   m_ObjectHideFlags: 0
