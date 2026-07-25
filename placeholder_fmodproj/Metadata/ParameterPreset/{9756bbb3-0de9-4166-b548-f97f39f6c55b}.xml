@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="ParameterPreset" id="{9756bbb3-0de9-4166-b548-f97f39f6c55b}">
 		<property name="name">
-			<value>entering_air_pocket</value>
+			<value>in_air_pocket</value>
 		</property>
 		<relationship name="folder">
 			<destination>{0ee4a762-adf9-4a60-9406-61ed7332c053}</destination>

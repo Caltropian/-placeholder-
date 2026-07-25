@@ -9,6 +9,8 @@ public class DepthTracker : MonoBehaviour
     [SerializeField]
     private int currentDepthLevel = 0;
     [SerializeField]
+    private int maxDepthLevels = 4;
+    [SerializeField]
     private Transform playerPositon;
     [SerializeField]
     private Transform startPosition;
@@ -29,7 +31,10 @@ public class DepthTracker : MonoBehaviour
         currentDepthLevel = Mathf.FloorToInt(currentDepthDifference / depthChunckSize);
         if (currentDepthLevel != previousDepthLevel)
         {
-            Debug.Log("Call dynamic music parameter and give them: " + currentDepthLevel * -1);
+            //Clamp the value. idk why im not using Mathf clamp don't look at me! i got no brain power left!
+            if (currentDepthLevel > maxDepthLevels) currentDepthLevel = maxDepthLevels;
+            if (currentDepthLevel < 0) currentDepthLevel = 0;
+            AudioContext.Instance.MusicAudioEmitter.ChangeIntensity(currentDepthLevel, maxDepthLevels);
         }
     }
 }

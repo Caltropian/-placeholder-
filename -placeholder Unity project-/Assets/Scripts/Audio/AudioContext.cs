@@ -9,7 +9,9 @@ public class AudioContext : Singleton<AudioContext>
 
 
     private PlayerAudioEmitter _playerAudioEmitter;
+    private MusicAudioEmitter _musicAudioEmitter;
     public PlayerAudioEmitter PlayerAudioEmitter => _playerAudioEmitter;
+    public MusicAudioEmitter MusicAudioEmitter => _musicAudioEmitter;
 
 
     protected override void Awake()
@@ -19,6 +21,14 @@ public class AudioContext : Singleton<AudioContext>
         _playerAudioEmitter = (PlayerAudioEmitter)audioEmitters.FirstOrDefault(value =>
         {
             if (typeof(PlayerAudioEmitter) == value.GetType())
+            {
+                return true;
+            }
+            return false;
+        });
+        _musicAudioEmitter = (MusicAudioEmitter)audioEmitters.FirstOrDefault(value =>
+        {
+            if (typeof(MusicAudioEmitter) == value.GetType())
             {
                 return true;
             }

@@ -30,8 +30,8 @@ public class PlayerAudioEmitter : IAudioEmitter
     /// </summary>
     [SerializeField]
     private FMODUnity.StudioEventEmitter _swimmingEmitter;
+    //
     private bool willStopAudioEmitter = true;
-
     private Dictionary<PlayerSFXTypes, FMODEvent> itemCounts = new(
     )
     {
@@ -52,6 +52,9 @@ public class PlayerAudioEmitter : IAudioEmitter
         new (PlayerSFXTypes.Ribbit, null), //done
         new (PlayerSFXTypes.Wallhit, null), //done
     };
+
+    [SerializeField]
+    private FMODUnity.StudioEventEmitter _aboveWaterSwimmingEmitter;
     void Start()
     {
         //have to do it this way as Dictionaries are not serializable *grumble*
@@ -64,23 +67,35 @@ public class PlayerAudioEmitter : IAudioEmitter
     void OnDisable()
     {
         _swimmingEmitter.Stop();
+        _aboveWaterSwimmingEmitter.Stop();
         willStopAudioEmitter = true;
     }
-    public void PlaySwimmingWaterSfx(bool stopAudio) //done
+    public void PlaySwimmingWaterSfx(bool stopAudio, PlayerState.PlayerStates isAbove) //done
     {
         //make sure audio is initialized()
         //change all parameters here. 
         //play with current player location.
+        FMODUnity.StudioEventEmitter emitterToChange;
+        if (isAbove == PlayerState.PlayerStates.ABOVEWATER)
+        {
+            if (_swimmingEmitter.IsPlaying()) _swimmingEmitter.Stop();
+            emitterToChange = _aboveWaterSwimmingEmitter;
+        }
+        else
+        {
+            if (_aboveWaterSwimmingEmitter.IsPlaying()) _aboveWaterSwimmingEmitter.Stop();
+            emitterToChange = _swimmingEmitter;
+        }
         if (stopAudio && willStopAudioEmitter == true) return;
         if (!stopAudio && willStopAudioEmitter == false) return;
         if (stopAudio)
         {
-            _swimmingEmitter.Stop();
+            emitterToChange.Stop();
             willStopAudioEmitter = true;
             return;
         }
         willStopAudioEmitter = false;
-        _swimmingEmitter.Play();
+        emitterToChange.Play();
     }
     public void PlaySfx(PlayerSFXTypes type)
     {

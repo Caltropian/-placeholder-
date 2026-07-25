@@ -34,7 +34,7 @@ public class WalkMovement : MonoBehaviour
     {
 
         if (!gameObject.scene.isLoaded) return;
-        AudioContext.Instance.PlayerAudioEmitter.PlaySwimmingWaterSfx(stopAudio: true);
+        AudioContext.Instance.PlayerAudioEmitter.PlaySwimmingWaterSfx(stopAudio: true, PlayerState.PlayerStates.ABOVEWATER);
     }
 
 
@@ -50,11 +50,11 @@ public class WalkMovement : MonoBehaviour
         legs.transform.rotation = Quaternion.Euler(0, 0, Mathf.MoveTowardsAngle(currentRotation, 0, 1));
         if (!playerState.HasFloorBeneath && IsMoving)
         {
-            AudioContext.Instance.PlayerAudioEmitter.PlaySwimmingWaterSfx(stopAudio: false);
+            AudioContext.Instance.PlayerAudioEmitter.PlaySwimmingWaterSfx(stopAudio: false, PlayerState.PlayerStates.ABOVEWATER);
         }
         else
         {
-            AudioContext.Instance.PlayerAudioEmitter.PlaySwimmingWaterSfx(stopAudio: true);
+            AudioContext.Instance.PlayerAudioEmitter.PlaySwimmingWaterSfx(stopAudio: true, PlayerState.PlayerStates.ABOVEWATER);
         }
     }
 }

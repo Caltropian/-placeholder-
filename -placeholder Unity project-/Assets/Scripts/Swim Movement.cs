@@ -59,7 +59,7 @@ public class SwimMovement : MonoBehaviour
     void OnDisable()
     {
         if (!gameObject.scene.isLoaded) return;
-        AudioContext.Instance.PlayerAudioEmitter.PlaySwimmingWaterSfx(stopAudio: true);
+        AudioContext.Instance.PlayerAudioEmitter.PlaySwimmingWaterSfx(stopAudio: true, PlayerState.PlayerStates.UNDERWATER);
     }
     private Vector2 moveValue = new(0, 0);
     public bool IsBoosting = false;
@@ -144,11 +144,11 @@ public class SwimMovement : MonoBehaviour
         if (IsMoving)
         {
             //Trigger Audio SFX
-            AudioContext.Instance.PlayerAudioEmitter.PlaySwimmingWaterSfx(stopAudio: false);
+            AudioContext.Instance.PlayerAudioEmitter.PlaySwimmingWaterSfx(stopAudio: false, PlayerState.PlayerStates.UNDERWATER);
         }
         else if (!IsBoosting)
         {
-            AudioContext.Instance.PlayerAudioEmitter.PlaySwimmingWaterSfx(stopAudio: true);
+            AudioContext.Instance.PlayerAudioEmitter.PlaySwimmingWaterSfx(stopAudio: true, PlayerState.PlayerStates.UNDERWATER);
         }
     }
     /// <summary>
