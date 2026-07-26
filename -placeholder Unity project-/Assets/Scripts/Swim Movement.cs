@@ -1,8 +1,4 @@
-
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using UnityEngine;
-using UnityEngine.SocialPlatforms;
 
 public class SwimMovement : MonoBehaviour
 {

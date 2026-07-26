@@ -1,6 +1,5 @@
 // ReSharper disable MemberCanBePrivate.Global
 // ReSharper disable UnusedMember.Global
-using UnityEditor.Rendering;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "FMOD Event", menuName = "jpix/Audio/FMOD/FMOD Event")]
