@@ -34,12 +34,8 @@ public class DeathScreenVisuals : IPausable
     protected override void OnDisable()
     {
         base.OnDisable();
-        if (!HasWon)
-        {
-            OxygenTracker.GracePeriodValueChange -= GraceCountdown;
-            OxygenTracker.OnDrown -= DeathRespawnCooldown;
-        }
-
+        OxygenTracker.GracePeriodValueChange -= GraceCountdown;
+        OxygenTracker.OnDrown -= DeathRespawnCooldown;
     }
     public void ActivateWon()
     {
