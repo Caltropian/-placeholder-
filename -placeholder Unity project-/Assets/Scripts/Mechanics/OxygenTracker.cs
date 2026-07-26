@@ -92,6 +92,7 @@ public class OxygenTracker : IPausable
                 if (gracePeriodBeforeDeath.graceExists && !_isOnGracePeriod)
                 {
                     _isOnGracePeriod = true;
+                    AudioContext.Instance.PlayerAudioEmitter.PlayHeatbeat(true);
                     _currentGraceTimer = UnityEngine.Random.Range(gracePeriodBeforeDeath.minValue, gracePeriodBeforeDeath.maxValue);
                     CurrentOxygen = _maxOxygen;
                 }
@@ -100,6 +101,7 @@ public class OxygenTracker : IPausable
                     if (canDie)
                     {
                         _ranOutOfOxygen = true;
+                        AudioContext.Instance.PlayerAudioEmitter.PlayHeatbeat(false);
                         OnDrown?.Invoke();
                     }
                     else
@@ -115,6 +117,7 @@ public class OxygenTracker : IPausable
             //Only Invoke once after the grace period is reverted.
             if (_isOnGracePeriod)
             {
+                AudioContext.Instance.PlayerAudioEmitter.PlayHeatbeat(false);
                 GracePeriodValueChange?.Invoke(false, CurrentOxygen);
             }
             _isOnGracePeriod = false;
