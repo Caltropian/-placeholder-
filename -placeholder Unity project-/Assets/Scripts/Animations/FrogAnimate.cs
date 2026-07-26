@@ -61,14 +61,14 @@ public class FrogAnimate : MonoBehaviour
 
         bool isX = _rb2D.linearVelocityX > 0;
 
-        HeadAnim.animator.SetBool(IsSurfaceHash, fishOuttaWater && !isWalk);
+        HeadAnim.animator.SetBool(IsSurfaceHash, fishOuttaWater /*&& !isWalk*/);
         HeadAnim.animator.SetBool(IsSwimHash, isSwimming);
 
-        ArmsAnim.animator.SetBool(IsSwimHash, isSwimming && !isWalk && !fishOuttaWater);
+        ArmsAnim.animator.SetBool(IsSwimHash, isSwimming && !fishOuttaWater);
         ArmsAnim.animator.SetBool(IsWalkHash, !isSwimming && isWalk && fishOuttaWater);
 
-        RLegAnim.animator.SetBool(IsSwimHash, isSwimming && !isWalk && !fishOuttaWater);
-        LLegAnim.animator.SetBool(IsSwim2Hash, isSwimming && !isWalk && !fishOuttaWater);
+        RLegAnim.animator.SetBool(IsSwimHash, isSwimming && !fishOuttaWater);
+        LLegAnim.animator.SetBool(IsSwim2Hash, isSwimming && !fishOuttaWater);
 
         RLegAnim.animator.SetBool(IsWalkHash, isWalk && fishOuttaWater);
         LLegAnim.animator.SetBool(IsWalk2Hash, isWalk && fishOuttaWater);
@@ -78,9 +78,9 @@ public class FrogAnimate : MonoBehaviour
 
         if (isWalk && fishOuttaWater)
         {
-            HeadAnim.sprite.sortingOrder = 5;
+            // HeadAnim.sprite.sortingOrder = 5;
 
-            HeadAnim.animator.SetBool(GoingUpHash, false);
+            // HeadAnim.animator.SetBool(GoingUpHash, false);
 
             RLegAnim.sprite.sortingOrder = 0;
 
@@ -93,8 +93,8 @@ public class FrogAnimate : MonoBehaviour
             Lleg.localPosition = new(ogR.x + allOffset + offset, ogR.y + .5f);
             Rleg.localPosition = new(ogR.x + allOffset, ogR.y + .5f);
         }
-        else if (fishOuttaWater)
-            HeadAnim.sprite.sortingOrder = 1;
+        // else if (fishOuttaWater)
+        //     HeadAnim.sprite.sortingOrder = 1;
         
         if (!fishOuttaWater)
         {
