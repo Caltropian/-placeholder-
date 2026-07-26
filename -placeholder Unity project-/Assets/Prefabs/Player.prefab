@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 316712274426165008}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.5, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -113,7 +113,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -1448597885
   m_SortingLayer: 1
-  m_SortingOrder: 2
+  m_SortingOrder: 3
   m_MaskInteraction: 0
   m_Sprite: {fileID: 3347529422739409507, guid: 89288751aab781a468db55fdbfe38c20, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -227,9 +227,9 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -1448597885
   m_SortingLayer: 1
-  m_SortingOrder: 3
+  m_SortingOrder: 1
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -3147095767884962073, guid: 21156fe35cdd7af4f8ca21a1f820d43c, type: 3}
+  m_Sprite: {fileID: 9079082096232017906, guid: a8f2583d856ac69458d15d66a85d8036, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -280,6 +280,7 @@ GameObject:
   - component: {fileID: 2873401005781656559}
   - component: {fileID: 4702250846373616144}
   - component: {fileID: 439384878431623651}
+  - component: {fileID: 5127362955674028993}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -454,9 +455,13 @@ MonoBehaviour:
   rotationSpeed: 4
   timeToReachMaxSpeed: 1
   head: {fileID: 4602769129749783065}
-  arms: {fileID: 0}
+  arms: {fileID: 5426662355208812999}
   legs: {fileID: 316712274426165008}
   rotationMethod: 0
+  headAnim: {fileID: 7949941367975728901}
+  rLegAnim: {fileID: 5873661806103147323}
+  lLegAnim: {fileID: 5902812028500085697}
+  armsAnim: {fileID: 5930373143424051561}
   IsBoosting: 0
   IsMoving: 0
 --- !u!114 &-6607255052257625683
@@ -613,6 +618,30 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: -1.13}
   m_Size: {x: 1, y: 2}
   m_Direction: 0
+--- !u!114 &5127362955674028993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4144288094768225815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a12d25f4de124447a6146d9d70fd223, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FrogAnimate
+  HeadAnim:
+    animator: {fileID: 7949941367975728901}
+    sprite: {fileID: 4602769129749783065}
+  ArmsAnim:
+    animator: {fileID: 5930373143424051561}
+    sprite: {fileID: 5426662355208812999}
+  RLegAnim:
+    animator: {fileID: 5873661806103147323}
+    sprite: {fileID: 6545691968366655053}
+  LLegAnim:
+    animator: {fileID: 5902812028500085697}
+    sprite: {fileID: 1000061838391130058}
 --- !u!1 &5808865330292849078
 GameObject:
   m_ObjectHideFlags: 0
@@ -862,8 +891,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8137791137115896206}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -1, y: -2.5, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: -0.75, y: -2.9100003, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -916,7 +945,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -1448597885
   m_SortingLayer: 1
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_MaskInteraction: 0
   m_Sprite: {fileID: -1825979122806219872, guid: 9153777b28c4e07459632e40a65eb50b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -976,8 +1005,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8642968254018130380}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 1, y: -2.5, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 1.25, y: -2.91, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1030,7 +1059,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -1448597885
   m_SortingLayer: 1
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_MaskInteraction: 0
   m_Sprite: {fileID: -1825979122806219872, guid: 9153777b28c4e07459632e40a65eb50b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
