@@ -22,6 +22,7 @@ public class DeathScreenVisuals : IPausable
     private float currAlpha = 0f;
     private bool isFirstTimeInGrace = true;
     private IEnumerator timerEnumerator;
+    public bool HasWon = false;
 
     protected override void OnEnable()
     {
@@ -33,9 +34,18 @@ public class DeathScreenVisuals : IPausable
     protected override void OnDisable()
     {
         base.OnDisable();
-        OxygenTracker.GracePeriodValueChange -= GraceCountdown;
-        OxygenTracker.OnDrown -= DeathRespawnCooldown;
+        if (!HasWon)
+        {
+            OxygenTracker.GracePeriodValueChange -= GraceCountdown;
+            OxygenTracker.OnDrown -= DeathRespawnCooldown;
+        }
 
+    }
+    public void ActivateWon()
+    {
+        HasWon = true;
+        OxygenTracker.GracePeriodValueChange -= GraceCountdown;
+        OxygenTracker.GracePeriodValueChange -= GraceCountdown;
     }
     public void GraceCountdown(bool isGracing, float timeUntilDeath)
     {

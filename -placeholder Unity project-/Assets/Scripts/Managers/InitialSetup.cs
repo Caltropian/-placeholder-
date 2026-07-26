@@ -26,6 +26,8 @@ public class InitialSetup : MonoBehaviour
     private bool skipStartScreen = false;
 
     private IInputReciever[] inputRecievers;
+    [SerializeField]
+    private GameObject tutorial1;
 
 
 
@@ -57,6 +59,10 @@ public class InitialSetup : MonoBehaviour
             go.SetActive(true);
         }
         playerState.CurrentCheckpoint = initialCheckpoint;
+        if (tutorial1 != null)
+        {
+            tutorial1.SetActive(false);
+        }
         initialDirector.Play();
     }
     public void StartGameCutscene()
@@ -77,6 +83,10 @@ public class InitialSetup : MonoBehaviour
                 spotlightMask.GetComponent<RectTransform>().localScale = new(0.2f, 0.2f, 1);
             }
             go.SetActive(false);
+        }
+        if (tutorial1 != null)
+        {
+            tutorial1.SetActive(true);
         }
         playerState.CurrentState = initialState;
     }

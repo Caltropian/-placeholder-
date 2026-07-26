@@ -32,6 +32,7 @@ public class OnWinSequence : MonoBehaviour
     private IEnumerator FadeToBlack(float timeToFade, DeathScreenVisuals blackScreenManager)
     {
         float localTimer = timeToFade;
+        blackScreenManager.ActivateWon();
         while (localTimer >= 0)
         {
             localTimer -= Time.deltaTime;
