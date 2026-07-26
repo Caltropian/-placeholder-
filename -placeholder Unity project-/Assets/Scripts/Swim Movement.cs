@@ -1,4 +1,6 @@
 
+using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.SocialPlatforms;
 
@@ -42,6 +44,8 @@ public class SwimMovement : MonoBehaviour
     private SpriteRenderer arms;
     [SerializeField]
     private GameObject legs;
+    private SpriteRenderer rLeg;
+    private SpriteRenderer lLeg;
 
     [Header("Dependencies")]
     private Rigidbody2D rb2d;
@@ -50,11 +54,28 @@ public class SwimMovement : MonoBehaviour
 
     private float localRotationTimer = 0.0f;
 
+    [Header("Animator")]
+    [SerializeField]
+    private Animator headAnim;
+    [SerializeField]
+    private Animator rLegAnim;
+    [SerializeField]
+    private Animator lLegAnim;
+    [SerializeField]
+    private Animator armsAnim;
+    private static readonly int GoingUpHash = Animator.StringToHash("goingUp");
+    private static readonly int StrokeHash = Animator.StringToHash("stroke");
+
+    void Awake()
+    {
+        rLeg = legs.transform.GetChild(0).GetComponent<SpriteRenderer>();
+        lLeg = legs.transform.GetChild(1).GetComponent<SpriteRenderer>();
+    }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
-
     }
     void OnDisable()
     {
@@ -94,6 +115,11 @@ public class SwimMovement : MonoBehaviour
             }
             if (strokeCooldown < 0)
             {
+                // sorry, had to add it here
+                armsAnim.SetTrigger(StrokeHash);
+                rLegAnim.SetTrigger(StrokeHash);
+                lLegAnim.SetTrigger(StrokeHash);
+        
                 boostForce = angle_to_vector(legs.transform.rotation.eulerAngles.z) * boostSpeed;
                 strokeCooldown = strokeMaxCooldown;
                 //Play BreastStroke Oneshot
@@ -132,13 +158,24 @@ public class SwimMovement : MonoBehaviour
                     legs.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
                     if (Mathf.Abs(angle - 180) > 90)
                     {
-                    head.sortingOrder = 2;
-                    arms.sortingOrder = 3;
+                    head.sortingOrder = 1;
+                    arms.sortingOrder = 4;
+
+                    rLeg.sortingOrder = 2;
+                    lLeg.sortingOrder = 3;
+
+                    headAnim.SetBool(GoingUpHash, true);
+
                     }
                     else
                     {
-                    head.sortingOrder = 3;
-                    arms.sortingOrder = 2;
+                    head.sortingOrder = 4;
+                    arms.sortingOrder = 3;
+
+                    rLeg.sortingOrder = 1;
+                    lLeg.sortingOrder = 2;
+
+                    headAnim.SetBool("goingUp", false);
                     }
                 }
             //}
