@@ -146,6 +146,7 @@ public class OxygenTracker : IPausable
         {
             _isOnGracePeriod = false;
         }
+        GracePeriodValueChange?.Invoke(_isOnGracePeriod, CurrentOxygen);
         CurrentOxygen = Mathf.Clamp((airBubbleTime / timeToDepleteOxygen) + CurrentOxygen, 0, _maxOxygen);
     }
 
