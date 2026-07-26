@@ -16,8 +16,8 @@ public class MusicAudioEmitter : IAudioEmitter
     {
         music.InitialiseParameters();
         caveAmbiance.InitialiseParameters();
-        if (_musicEmitter.EventReference.Path == "") _musicEmitter.EventReference = music.EventReference;
-        if (_ambienceEmitter.EventReference.Path == "") _ambienceEmitter.EventReference = caveAmbiance.EventReference;
+        if (_musicEmitter.EventReference.Guid.IsNull) _musicEmitter.EventReference = music.EventReference;
+        if (_ambienceEmitter.EventReference.Guid.IsNull) _ambienceEmitter.EventReference = caveAmbiance.EventReference;
     }
     /// <summary>
     /// Should be assigned to the OnPlayerStateChange event in PlayerState
