@@ -30,6 +30,8 @@ public class PlayerAudioEmitter : IAudioEmitter
     /// </summary>
     [SerializeField]
     private FMODUnity.StudioEventEmitter _swimmingEmitter;
+    [SerializeField]
+    private FMODUnity.StudioEventEmitter _heartbeatEmitter;
     //
     private bool willStopAudioEmitter = true;
     private Dictionary<PlayerSFXTypes, FMODEvent> itemCounts = new(
@@ -68,6 +70,7 @@ public class PlayerAudioEmitter : IAudioEmitter
     {
         _swimmingEmitter.Stop();
         _aboveWaterSwimmingEmitter.Stop();
+        _heartbeatEmitter.Stop();
         willStopAudioEmitter = true;
     }
     public void PlaySwimmingWaterSfx(bool stopAudio, PlayerState.PlayerStates isAbove) //done
@@ -96,6 +99,17 @@ public class PlayerAudioEmitter : IAudioEmitter
         }
         willStopAudioEmitter = false;
         emitterToChange.Play();
+    }
+    public void PlayHeatbeat(bool play)
+    {
+        if (play)
+        {
+            _heartbeatEmitter.Play();
+        }
+        else
+        {
+            _heartbeatEmitter.Stop();
+        }
     }
     public void PlaySfx(PlayerSFXTypes type)
     {

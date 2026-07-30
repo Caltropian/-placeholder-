@@ -42,7 +42,7 @@ public class MusicAudioEmitter : IAudioEmitter
                 //Change the parameter: in_air_pocket = true;
                 _musicEmitter.SetParameter(music.ParamList[0].name, 0f, false);
             }
-            if (!_ambienceEmitter.IsPlaying()) _ambienceEmitter.Play();
+            _ambienceEmitter.Play();
         }
     }
     public void ChangeIntensity(int currIntensityLevel, int maxIntensityLevel)
