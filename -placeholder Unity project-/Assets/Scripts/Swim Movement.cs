@@ -9,12 +9,13 @@ public class SwimMovement : MonoBehaviour
         RotateOnSideKeys
     }
 
-    
+
 
 
     [Header("Movement Parameters")]
     [SerializeField]
-    private float swimSpeed = 4f;
+    private float swimSpeed = 4f,
+        reverseModifier = 2f;
     [SerializeField]
     private float boostSpeed = 10f,
 
@@ -24,6 +25,8 @@ public class SwimMovement : MonoBehaviour
     private float strokeMaxCooldown = 0.6f,
         strokeCooldown = 0f,
         strokeHoldModifier = 1.1f;
+
+
 
     [Header("Rotation Parameters")]
     [SerializeField]
@@ -97,6 +100,8 @@ public class SwimMovement : MonoBehaviour
     void FixedUpdate()
     {
         Vector2 moveForce = moveValue * swimSpeed;
+        float moveOpposing = Mathf.Abs(Vector2.SignedAngle(moveValue, rb2d.linearVelocity) / 180);
+        moveForce += moveForce * moveOpposing * reverseModifier;
         Vector2 boostForce = Vector2.zero;
         if (rotationMethod == RotationMethod.RotateOnSideKeys)
         {
@@ -108,6 +113,7 @@ public class SwimMovement : MonoBehaviour
             if (strokeCooldown < 1)
             {
                 moveForce *= Mathf.Lerp(3, boostSteerMod, strokeCooldown);
+                
             }
             if (strokeCooldown < 0)
             {
